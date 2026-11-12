@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
-import { SITE_IDENTITY } from "@/lib/philosophy";
-import fdMark from "../../../public/denko/fd-mark.png";
+import fdMark from "../../public/fd-mark.png";
 import MobileMenu from "./MobileMenu";
 import "./denko.css";
 
@@ -12,7 +10,9 @@ import "./denko.css";
  * facilities, certifications or funding.
  */
 
-const CONTACT_EMAIL = SITE_IDENTITY.contactEmail;
+/** Contact address published on platodesignlab.com. */
+const CONTACT_EMAIL = "philaicontact@icloud.com";
+const PLATO_SITE = "https://www.platodesignlab.com";
 
 /**
  * Registered legal name of the Japanese gōdō kaisha (合同会社) that operates
@@ -29,10 +29,10 @@ const DESCRIPTION =
 export const metadata: Metadata = {
   title: { absolute: TITLE },
   description: DESCRIPTION,
-  alternates: { canonical: "https://www.platodesignlab.com/denko" },
+  alternates: { canonical: "https://fujiedenko.platodesignlab.com/" },
   openGraph: {
     type: "website",
-    url: "https://www.platodesignlab.com/denko",
+    url: "https://fujiedenko.platodesignlab.com/",
     siteName: "FUJIE DENKO",
     title: TITLE,
     description: DESCRIPTION,
@@ -130,7 +130,7 @@ function SystemSchematic() {
   );
 }
 
-export default function DenkoPage() {
+export default function Home() {
   return (
     <div className="fd-root">
       <a href="#fd-main" className="fd-skip">Skip to content</a>
@@ -304,9 +304,9 @@ export default function DenkoPage() {
                   Theoretical proposals and experimentally verified engineering performance are explicitly
                   distinguished.
                 </p>
-                <Link href="/research" className="fd-link">
+                <a href={`${PLATO_SITE}/research`} className="fd-link">
                   Explore P/A Research <span aria-hidden="true">→</span>
-                </Link>
+                </a>
               </div>
               <div>
                 <ul className="fd-frameworks" aria-label="Research frameworks">
@@ -368,7 +368,7 @@ export default function DenkoPage() {
               {NAV.map((n) => (
                 <li key={n.href}><a href={n.href}>{n.label}</a></li>
               ))}
-              <li><Link href="/">Plato Design Lab</Link></li>
+              <li><a href={PLATO_SITE}>Plato Design Lab</a></li>
             </ul>
           </nav>
         </div>

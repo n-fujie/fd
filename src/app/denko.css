@@ -1,13 +1,8 @@
-/* ─── FUJIE DENKO (/denko) ──────────────────────────────────────────────────
- * Every rule here is scoped to `.fd-root` or to a parent that *contains*
- * `.fd-root` (via :has). Nothing matches on any other route, even if this
- * stylesheet stays loaded after client-side navigation.
+/* ─── FUJIE DENKO ──────────────────────────────────────────────────
+ * All rules are scoped to `.fd-root`.
  */
 
-/* Hide the Plato Design Lab chrome and container constraints on /denko only. */
-body:has(.fd-root) > .site-header,
-body:has(.fd-root) > .site-footer { display: none !important; } /* footer has inline display */
-.page-container:has(> .fd-root) { max-width: none; padding: 0; }
+html, body { margin: 0; background: #ffffff; }
 
 .fd-root {
   --fd-bg: #ffffff;
@@ -476,3 +471,10 @@ body:has(.fd-root) > .site-footer { display: none !important; } /* footer has in
 @media (prefers-reduced-motion: reduce) {
   .fd-root * { transition: none !important; }
 }
+
+/* Minimal base (standalone site, no global reset) */
+.fd-root *, .fd-root *::before, .fd-root *::after { box-sizing: border-box; }
+.fd-root ul, .fd-root ol { list-style: none; margin: 0; padding: 0; }
+.fd-root a { text-decoration: none; }
+.fd-root img { display: block; max-width: 100%; height: auto; }
+.fd-root h1, .fd-root h2, .fd-root h3, .fd-root dl, .fd-root dd, .fd-root figure { margin: 0; }

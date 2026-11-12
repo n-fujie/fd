@@ -8,7 +8,7 @@ export const contentType = "image/png";
 
 export default async function Image() {
   // The provided FD symbol, used as-is (margins cropped only).
-  const mark = await readFile(join(process.cwd(), "public/denko/fd-mark.png"));
+  const mark = await readFile(join(process.cwd(), "public/fd-mark.png"));
   const src = `data:image/png;base64,${mark.toString("base64")}`;
 
   return new ImageResponse(
