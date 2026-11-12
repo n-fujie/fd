@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import fdMark from "../../public/fd-mark.png";
+import systemFamily from "../../public/concepts/system-family.webp";
+import generator from "../../public/concepts/generator.webp";
+import tactileArray from "../../public/concepts/tactile-array.webp";
+import quadrupedA from "../../public/concepts/quadruped-a.webp";
+import quadrupedB from "../../public/concepts/quadruped-b.webp";
 import MobileMenu from "./MobileMenu";
 import "./denko.css";
 
@@ -77,6 +82,43 @@ const TECHNOLOGIES = [
 ];
 
 const PROCESS = ["Theoretical research", "Computational modeling", "Physical prototyping", "Experimental verification"];
+
+/* Concept renderings: images of devices that have NOT been built.
+ * Every caption must keep the "Concept rendering" status. Do not add
+ * specifications, performance figures, prices or availability. */
+const CONCEPTS = [
+  {
+    src: systemFamily,
+    title: "System family",
+    caption: "Legged platform, tactile sensing pad, and generator module shown together as one integrated system concept.",
+    alt: "Concept rendering of a white quadruped robot with a transparent top housing, a tactile sensing pad, and a cylindrical generator module, each marked with the FD symbol.",
+    feature: true,
+  },
+  {
+    src: generator,
+    title: "Hand-crank generation",
+    caption: "Mechanical-to-electrical conversion through a geared generator, with on-board storage and control electronics.",
+    alt: "Concept rendering of a hand-crank generator unit with transparent covers showing gears, a generator, circuit boards, and storage cells.",
+  },
+  {
+    src: tactileArray,
+    title: "Tactile sensor array",
+    caption: "A curved sensing surface with a grid of discrete sensor elements routed to an on-board processing board.",
+    alt: "Concept rendering of a curved tactile sensor module with a grid of sensor elements under a transparent cover and an exposed circuit board.",
+  },
+  {
+    src: quadrupedA,
+    title: "Legged embodied platform",
+    caption: "A quadruped platform concept for embodied sensing and control experiments, with exposed compute and wiring.",
+    alt: "Concept rendering of a white quadruped robot with a transparent top housing showing circuit boards and blue wiring.",
+  },
+  {
+    src: quadrupedB,
+    title: "Legged platform, sensor-dense variant",
+    caption: "A variant concept with additional perception sensors and a side-mounted energy module.",
+    alt: "Concept rendering of a quadruped robot variant with additional cameras, a top-mounted sensor, and a side-mounted module.",
+  },
+];
 
 const RESEARCH_FRAMEWORKS = [
   "Operational-Shape Realism",
@@ -285,10 +327,51 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ─── 03 Research ───────────────────────────────────────────────── */}
+        {/* ─── 03 Concepts ───────────────────────────────────────────────── */}
+        <section id="concepts" className="fd-section" aria-labelledby="fd-con-h">
+          <div className="fd-wrap">
+            <p className="fd-label fd-mono">03 / CONCEPTS</p>
+            <div className="fd-con-head">
+              <h2 id="fd-con-h" className="fd-h2">Concept renderings.</h2>
+              <p className="fd-con-notice">
+                <span className="fd-mono">Status: Concept only</span>
+                These are design renderings, not photographs. None of the devices shown has been built,
+                tested, or offered for sale. They illustrate directions under study, and no specifications or
+                performance are implied. Markings shown in the renderings, including model designations, are
+                provisional.
+              </p>
+            </div>
+            <ul className="fd-con-grid">
+              {CONCEPTS.map((c, i) => (
+                <li key={c.title} className={c.feature ? "fd-con-item fd-con-feature" : "fd-con-item"}>
+                  <figure>
+                    <div className="fd-con-img">
+                      <Image
+                        src={c.src}
+                        alt={c.alt}
+                        placeholder="blur"
+                        sizes={c.feature ? "(max-width: 960px) 100vw, 1144px" : "(max-width: 760px) 100vw, (max-width: 960px) 50vw, 572px"}
+                      />
+                      <span className="fd-con-badge fd-mono">Concept rendering</span>
+                    </div>
+                    <figcaption>
+                      <span className="fd-mono fd-con-idx">{`C${String(i + 1).padStart(2, "0")}`}</span>
+                      <span className="fd-con-text">
+                        <strong>{c.title}</strong>
+                        <span>{c.caption}</span>
+                      </span>
+                    </figcaption>
+                  </figure>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        {/* ─── 04 Research ───────────────────────────────────────────────── */}
         <section id="research" className="fd-section" aria-labelledby="fd-res-h">
           <div className="fd-wrap">
-            <p className="fd-label fd-mono">03 / RESEARCH</p>
+            <p className="fd-label fd-mono">04 / RESEARCH</p>
             <div className="fd-split">
               <div>
                 <h2 id="fd-res-h" className="fd-h2">Research-driven engineering.</h2>
@@ -326,10 +409,10 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ─── 04 Collaboration ──────────────────────────────────────────── */}
+        {/* ─── 05 Collaboration ──────────────────────────────────────────── */}
         <section id="contact" className="fd-section fd-collab" aria-labelledby="fd-col-h">
           <div className="fd-wrap">
-            <p className="fd-label fd-mono">04 / COLLABORATION</p>
+            <p className="fd-label fd-mono">05 / COLLABORATION</p>
             <h2 id="fd-col-h" className="fd-h2 fd-h2-wide">
               Building the next generation of physical systems.
             </h2>

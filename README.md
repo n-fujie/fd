@@ -21,6 +21,7 @@ src/app/
 public/
   fd-logo.png            FD symbol, original file as provided
   fd-mark.png            Same image, white margins cropped only
+  concepts/*.webp        Concept renderings (devices not built; always labelled as such)
 ```
 
 ## Develop

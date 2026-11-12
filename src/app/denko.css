@@ -385,6 +385,61 @@ html, body { margin: 0; background: #ffffff; }
   background: var(--fd-tint);
 }
 
+/* Concept renderings */
+.fd-con-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(24px, 6vw, 96px);
+  align-items: end;
+  margin-bottom: 40px;
+}
+.fd-con-head .fd-h2 { margin-bottom: 0; }
+.fd-con-notice {
+  border-left: 2px solid var(--fd-accent);
+  padding: 4px 0 4px 18px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--fd-mid);
+  max-width: 60ch;
+}
+.fd-con-notice .fd-mono { display: block; color: var(--fd-ink); font-weight: 600; margin-bottom: 6px; }
+.fd-con-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--fd-rule);
+  border: 1px solid var(--fd-rule);
+}
+.fd-con-item { background: #fff; }
+.fd-con-feature { grid-column: 1 / -1; }
+.fd-con-item figure { margin: 0; height: 100%; display: flex; flex-direction: column; }
+.fd-con-img { position: relative; background: #f4f5f7; }
+.fd-con-img img { width: 100%; height: auto; }
+.fd-con-feature .fd-con-img img { max-width: 900px; margin: 0 auto; }
+.fd-con-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #fff;
+  border: 1px solid var(--fd-ink);
+  padding: 4px 8px;
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: var(--fd-ink);
+}
+.fd-con-item figcaption {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  gap: 12px;
+  padding: 18px 20px 22px;
+  border-top: 1px solid var(--fd-rule);
+  flex: 1;
+}
+.fd-con-idx { color: var(--fd-accent); font-weight: 600; padding-top: 2px; }
+.fd-con-text { display: flex; flex-direction: column; gap: 4px; }
+.fd-con-text strong { font-size: 1rem; font-weight: 700; letter-spacing: -0.01em; }
+.fd-con-text span { font-size: 0.9rem; line-height: 1.55; color: var(--fd-mid); }
+
 /* Research */
 .fd-frameworks { border-top: 1px solid var(--fd-ink); }
 .fd-frameworks li {
@@ -453,6 +508,7 @@ html, body { margin: 0; background: #ffffff; }
   .fd-cards { grid-template-columns: minmax(0, 1fr); }
   .fd-card-head { margin-bottom: 28px; }
   .fd-plate { max-width: 640px; }
+  .fd-con-head { grid-template-columns: minmax(0, 1fr); align-items: start; }
 }
 
 @media (max-width: 760px) {
@@ -466,6 +522,8 @@ html, body { margin: 0; background: #ffffff; }
   .fd-frameworks li { font-size: 1rem; grid-template-columns: 36px minmax(0, 1fr) auto; gap: 12px; }
   .fd-collab-cta, .fd-collab-cta .fd-btn { width: 100%; }
   .fd-footer-links { grid-template-columns: minmax(0, 1fr); }
+  .fd-con-grid { grid-template-columns: minmax(0, 1fr); }
+  .fd-con-item figcaption { grid-template-columns: 36px minmax(0, 1fr); padding: 16px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
