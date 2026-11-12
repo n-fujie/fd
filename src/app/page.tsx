@@ -6,6 +6,9 @@ import generator from "../../public/concepts/generator.webp";
 import tactileArray from "../../public/concepts/tactile-array.webp";
 import quadrupedA from "../../public/concepts/quadruped-a.webp";
 import quadrupedB from "../../public/concepts/quadruped-b.webp";
+import generatorLarge from "../../public/concepts/generator-large.webp";
+import quadrupedC from "../../public/concepts/quadruped-c.webp";
+import tactileModule from "../../public/concepts/tactile-module.webp";
 import MobileMenu from "./MobileMenu";
 import "./denko.css";
 
@@ -117,6 +120,25 @@ const CONCEPTS = [
     title: "Legged platform, sensor-dense variant",
     caption: "A variant concept with additional perception sensors and a side-mounted energy module.",
     alt: "Concept rendering of a quadruped robot variant with additional cameras, a top-mounted sensor, and a side-mounted module.",
+  },
+  {
+    src: generatorLarge,
+    title: "Large-format generation module",
+    caption: "A flywheel-and-linkage drive coupled to a generator, with power and control electronics in a transparent enclosure.",
+    alt: "Concept rendering of a large white generator unit with an open flywheel frame, a linkage arm, a generator in a transparent housing, and a control board.",
+    feature: true,
+  },
+  {
+    src: quadrupedC,
+    title: "Legged platform, articulated variant",
+    caption: "A quadruped body concept with exposed compute, for research on embodied spiking-network sensing and control.",
+    alt: "Concept rendering of a white articulated quadruped robot with a transparent compute bay and blue accent lighting.",
+  },
+  {
+    src: tactileModule,
+    title: "Tactile sensing module",
+    caption: "A compact module with a segmented tactile surface over processing electronics and a sealed connector.",
+    alt: "Concept rendering of a compact sensor module with a segmented transparent tactile surface, visible circuit boards, and a round connector.",
   },
 ];
 
@@ -337,8 +359,8 @@ export default function Home() {
                 <span className="fd-mono">Status: Concept only</span>
                 These are design renderings, not photographs. None of the devices shown has been built,
                 tested, or offered for sale. They illustrate directions under study, and no specifications or
-                performance are implied. Markings shown in the renderings, including model designations, are
-                provisional.
+                performance are implied. Markings shown in the renderings, including model designations and
+                the drawn form of the FD symbol, are provisional.
               </p>
             </div>
             <ul className="fd-con-grid">
