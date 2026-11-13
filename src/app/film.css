@@ -1,0 +1,7 @@
+/* Promo film section (home). Kept separate from denko.css. */
+.fd-root .fd-film { padding: clamp(40px, 6vw, 80px) 0; border-bottom: 1px solid var(--fd-rule); background: var(--fd-ink); color: #fff; }
+.fd-root .fd-film .fd-label { color: #8fb1ff; }
+.fd-root .fd-film-h { margin: 0 0 24px; font-size: clamp(1.5rem, 2.6vw, 2.1rem); line-height: 1.1; font-weight: 700; letter-spacing: -0.02em; text-transform: uppercase; }
+.fd-root .fd-film-frame { margin: 0; }
+.fd-root .fd-film video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #000; }
+.fd-root .fd-film figcaption { margin-top: 12px; font-size: 0.66rem; color: rgba(255, 255, 255, 0.6); }

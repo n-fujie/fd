@@ -5,6 +5,7 @@ import { AnnounceBar, SiteHeader, SiteFooter, ProductGrid, UpdatesBand } from ".
 import { CATEGORIES, HERO_IMAGE, PRODUCTS, productsIn, type CategoryId } from "./catalog";
 import { CONTACT_EMAIL, PLATO_SITE, SITE_URL, mailto } from "./site";
 import "./denko.css";
+import "./film.css";
 
 const TITLE = "FUJIE DENKO | Energy & Computational Hardware";
 const DESCRIPTION =
@@ -58,12 +59,12 @@ const ORDERING = [
 ];
 
 const FEATURED = [
-  "observation-rack",
-  "tactile-robotic-hand",
+  "research-rack-modules",
+  "legged-platform-transparent",
+  "humanoid-test-rig",
   "generation-module-large",
-  "humanoid-platform",
-  "tactile-sensing-module",
-  "legged-platform-articulated",
+  "tactile-robotic-hand",
+  "bipedal-platform",
   "hand-crank-generator",
   "instrumented-louver-facade",
 ];
@@ -139,6 +140,29 @@ export default function Home() {
                 sizes="(max-width: 960px) 100vw, 640px"
               />
               <figcaption className="fd-mono">Concept rendering · not a photograph</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        {/* ─── Film ──────────────────────────────────────────────────────── */}
+        <section id="film" className="fd-film" aria-labelledby="fd-film-h">
+          <div className="fd-wrap">
+            <p className="fd-label fd-mono">FILM</p>
+            <h2 id="fd-film-h" className="fd-film-h">The FD lineup in 48 seconds</h2>
+            <figure className="fd-film-frame">
+              <video
+                controls
+                muted
+                playsInline
+                preload="none"
+                poster="/video/fd-promo-poster.jpg"
+                aria-describedby="fd-film-cap"
+              >
+                <source src="/video/fd-promo-720p.mp4" type="video/mp4" />
+              </video>
+              <figcaption id="fd-film-cap" className="fd-mono">
+                All devices shown are concept renderings · Not built, not tested, not for sale · No audio
+              </figcaption>
             </figure>
           </div>
         </section>

@@ -11,6 +11,10 @@ import roboticHand from "../../public/concepts/robotic-hand.webp";
 import humanoidLab from "../../public/concepts/humanoid-lab.webp";
 import observationRack from "../../public/concepts/observation-rack.webp";
 import louverFacade from "../../public/concepts/louver-facade.webp";
+import humanoidTestRig from "../../public/concepts/humanoid-test-rig.webp";
+import researchRackModules from "../../public/concepts/research-rack-modules.webp";
+import bipedalPlatform from "../../public/concepts/bipedal-platform.webp";
+import leggedTransparent from "../../public/concepts/legged-platform-transparent.webp";
 
 /* ─── Product catalog ─────────────────────────────────────────────────────
  * Every listing carries its real development stage. Today every item is a
@@ -194,6 +198,58 @@ export const PRODUCTS: Product[] = [
       "An upper-body humanoid concept at a workbench. The laboratory shown is part of the rendering, not an existing facility.",
     image: humanoidLab,
     alt: "Concept rendering of a white humanoid robot with exposed cabling reaching toward electronics on a workbench, in a laboratory with an FD symbol on the wall.",
+  },
+  {
+    slug: "research-rack-modules",
+    ref: "C14",
+    name: "Modular Research Rack & Sensor Modules",
+    category: "sensing",
+    stage: "concept",
+    price: null,
+    summary: "An enclosed rack with swappable sensor modules.",
+    description:
+      "An enclosed research rack with a test fixture, shown with interchangeable modules for tactile, force, inertial, EMG, and custom sensing. The interface, signals, and readouts on screen are rendered, not measured data.",
+    image: researchRackModules,
+    alt: "Concept rendering of a black enclosed rack marked FUJIE DENKO with a test fixture inside, a row of labelled sensor modules on a steel bench, and a monitor showing signal traces.",
+  },
+  {
+    slug: "humanoid-test-rig",
+    ref: "C13",
+    name: "Humanoid Test Rig",
+    category: "robotics",
+    stage: "concept",
+    price: null,
+    summary: "A suspended humanoid in an instrumented test frame.",
+    description:
+      "A humanoid body suspended by cables inside an aluminium test frame with linear actuators and a monitoring station. The facility shown is part of the rendering, not an existing laboratory.",
+    image: humanoidTestRig,
+    alt: "Concept rendering of a white humanoid robot suspended by cables in a large aluminium test frame with actuators, cabinets marked FUJIE DENKO, and a monitor showing a skeletal figure.",
+  },
+  {
+    slug: "bipedal-platform",
+    ref: "C15",
+    name: "Bipedal Locomotion Platform",
+    category: "robotics",
+    stage: "concept",
+    price: null,
+    summary: "Legged locomotion studied on a treadmill.",
+    description:
+      "The lower body of a bipedal platform walking on a treadmill, with exposed actuators and cabling. The setting and on-screen gait data are rendered.",
+    image: bipedalPlatform,
+    alt: "Concept rendering of a white and aluminium robotic leg marked with the FD symbol stepping on a treadmill, with monitors showing a walking figure in the background.",
+  },
+  {
+    slug: "legged-platform-transparent",
+    ref: "C16",
+    name: "Legged Platform — Transparent Body",
+    category: "robotics",
+    stage: "concept",
+    price: null,
+    summary: "A clear-shell quadruped with visible electronics.",
+    description:
+      "A quadruped concept with a transparent shell exposing its electronics, beside a display of spiking-network, touch, and motor signals. All data shown is rendered; markings, including the model designation, are provisional.",
+    image: leggedTransparent,
+    alt: "Concept rendering of a quadruped robot with a transparent body and black joints marked FUJIE DENKO, beside a monitor showing spike rasters and signal plots.",
   },
   {
     slug: "instrumented-louver-facade",
