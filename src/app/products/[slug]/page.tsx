@@ -76,7 +76,7 @@ export default async function ProductPage({ params }: Props) {
                       Buy now
                     </a>
                     <p className="fd-pd-secure">
-                      Secure checkout by Stripe. Opens in a new tab. <Link href={LEGAL_PATH}>特定商取引法に基づく表記</Link>
+                      Secure checkout by Stripe. Opens in a new tab. <Link href={LEGAL_PATH}>Legal notice</Link>
                     </p>
                   </>
                 ) : available ? (
