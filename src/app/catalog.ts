@@ -223,6 +223,30 @@ export const PRODUCTS: Product[] = [
 
 export const HERO_IMAGE = systemFamily;
 
+/* ─── Stripe Payment Links ────────────────────────────────────────────────
+ * Same pattern as platodesignlab.com Return Audit: one Stripe Payment Link
+ * per product, read from an env var at build time.
+ *
+ *   NEXT_PUBLIC_STRIPE_URL_<SLUG>   e.g. NEXT_PUBLIC_STRIPE_URL_OBSERVATION_RACK
+ *
+ * The Buy button appears only when the product is `stage: "available"`, has a
+ * confirmed `price`, AND its env var is set. Otherwise the page falls back to
+ * email (Order inquiry / Notify me). Concept items can never be paid for.
+ *
+ * Stripe Payment Link confirmation redirect must be set manually in Stripe to:
+ *   https://fujiedenko.platodesignlab.com/order/thanks
+ * This code only creates the destination page.
+ */
+export function stripeEnvName(slug: string) {
+  return `NEXT_PUBLIC_STRIPE_URL_${slug.toUpperCase().replace(/-/g, "_")}`;
+}
+
+export function stripeUrl(p: Product): string | null {
+  if (p.stage !== "available" || !p.price) return null;
+  const url = process.env[stripeEnvName(p.slug)];
+  return url && url.startsWith("https://") ? url : null;
+}
+
 export function getProduct(slug: string) {
   return PRODUCTS.find((p) => p.slug === slug);
 }

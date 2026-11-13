@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AnnounceBar, SiteHeader, SiteFooter, ProductGrid, StageBadge, PriceLine } from "../../chrome";
-import { PRODUCTS, STAGE_NOTE, categoryName, getProduct } from "../../catalog";
+import { PRODUCTS, STAGE_NOTE, categoryName, getProduct, stripeUrl } from "../../catalog";
 import { SITE_URL, mailto } from "../../site";
 import "../../denko.css";
 
@@ -38,6 +38,7 @@ export default async function ProductPage({ params }: Props) {
   const others = PRODUCTS.filter((x) => x.category !== p.category);
   const related = [...sameCat, ...others].slice(0, 4);
   const available = p.stage === "available" && p.price;
+  const buyUrl = stripeUrl(p);
 
   return (
     <div className="fd-root">
@@ -69,7 +70,14 @@ export default async function ProductPage({ params }: Props) {
                   <PriceLine product={p} />
                 </div>
                 <p className="fd-pd-stage">{STAGE_NOTE[p.stage]}</p>
-                {available ? (
+                {buyUrl ? (
+                  <>
+                    <a href={buyUrl} className="fd-btn fd-btn-primary fd-btn-block" target="_blank" rel="noreferrer">
+                      Buy now
+                    </a>
+                    <p className="fd-pd-secure">Secure checkout by Stripe. Opens in a new tab.</p>
+                  </>
+                ) : available ? (
                   <a href={mailto(`Order inquiry: ${p.name}`)} className="fd-btn fd-btn-primary fd-btn-block">Order inquiry</a>
                 ) : (
                   <a href={mailto(`Release updates: ${p.name} (${p.ref})`)} className="fd-btn fd-btn-primary fd-btn-block">

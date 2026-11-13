@@ -18,6 +18,7 @@ src/app/
   catalog.ts             Product data: stage, price, images. Edit here to add or release products
   site.ts                Contact, nav, OPERATING_ENTITY_LEGAL_NAME
   chrome.tsx             Header, footer, announce bar, product card
+  order/thanks/          Stripe Payment Link redirect destination
   denko.css              Styles (scoped to .fd-root)
   MobileMenu.tsx         Mobile menu (<details>; closes on link tap)
   opengraph-image.tsx    1200×630 share image (twitter-image re-exports it)
@@ -39,7 +40,15 @@ npm run build
 
 ## Releasing a product
 
-Every catalog item currently has `stage: "concept"` and `price: null`, so it shows "Not yet for sale" and a "Notify me" email button. There is no cart or checkout. When a product is actually released, follow the checklist at the top of `src/app/catalog.ts`: set the stage and price, use real photographs, and publish the 特定商取引法に基づく表記 page before taking any order.
+Every catalog item currently has `stage: "concept"` and `price: null`, so it shows "Not yet for sale" and a "Notify me" email button.
+
+Checkout uses **Stripe Payment Links** (same pattern as platodesignlab.com Return Audit). For each product to sell:
+
+1. In Stripe, create a Payment Link for the product. Set its confirmation redirect to `https://fujiedenko.platodesignlab.com/order/thanks`.
+2. In Vercel (project `fd`), add the env var `NEXT_PUBLIC_STRIPE_URL_<SLUG>` with the link, e.g. `NEXT_PUBLIC_STRIPE_URL_OBSERVATION_RACK`.
+3. In `catalog.ts`, set the product's `stage: "available"` and `price`, then push.
+
+The "Buy now" button appears only when all three are in place; otherwise the page falls back to email. When a product is actually released, follow the checklist at the top of `src/app/catalog.ts`: set the stage and price, use real photographs, and publish the 特定商取引法に基づく表記 page before taking any order.
 
 ## Open item
 

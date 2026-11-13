@@ -632,6 +632,9 @@ html, body { margin: 0; background: #ffffff; }
 .fd-pd-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 1.05rem; }
 .fd-pd-stage { font-size: 0.85rem; color: var(--fd-mid); line-height: 1.5; }
 .fd-btn-block { width: 100%; }
+.fd-pd-secure { font-size: 0.75rem; color: var(--fd-mid); text-align: center; margin-top: -4px !important; }
+.fd-thanks { padding: clamp(48px, 8vw, 112px) 0; max-width: 720px; }
+.fd-thanks .fd-body { margin-top: 20px; }
 .fd-pd-desc h2 { margin: 0 0 10px; font-size: 0.7rem; color: var(--fd-mid); font-weight: 600; }
 .fd-pd-desc p { font-size: 1rem; line-height: 1.65; }
 .fd-pd-dl { margin-top: 24px; }
