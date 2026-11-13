@@ -73,6 +73,25 @@ const ORDERING = [
   { title: "Shipped from Tokyo", body: "Orders ship from Japan. Import duties and taxes in your country may apply." },
 ];
 
+const CONTACT_ROUTES = [
+  {
+    kicker: "Product inquiries",
+    title: "Ask about a product or its availability.",
+    body: "Questions about a listing, its development stage, or release timing. We reply by email.",
+    cta: "Send a product inquiry",
+    subject: "Product inquiry",
+    img: "tactile-sensing-module",
+  },
+  {
+    kicker: "Research & business collaboration",
+    title: "Work with us on physical systems.",
+    body: "Research collaboration, physical prototyping, experimental hardware, and engineering partnerships, in Japan and internationally.",
+    cta: "Start a collaboration",
+    subject: "Collaboration inquiry",
+    img: "tactile-robotic-hand",
+  },
+];
+
 const FEATURED = [
   "research-rack-modules",
   "legged-platform-transparent",
@@ -400,28 +419,52 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ─── 05 Collaboration ──────────────────────────────────────────── */}
-        <section id="contact" className="fd-section fd-collab" aria-labelledby="fd-col-h">
-          <div className="fd-wrap">
-            <p className="fd-label fd-mono">07 / CONTACT</p>
-            <h2 id="fd-col-h" className="fd-h2 fd-h2-wide">
-              Building the next generation of physical systems.
-            </h2>
-            <div className="fd-collab-row">
+        {/* ─── 07 Custom development (XELA-style customise band) ─────────── */}
+        <section id="custom" className="fd-custom" aria-labelledby="fd-cus-h">
+          <div className="fd-wrap fd-custom-grid">
+            <div>
+              <p className="fd-label fd-mono">07 / CUSTOM DEVELOPMENT</p>
+              <h2 id="fd-cus-h" className="fd-h2s">Hardware shaped around your application.</h2>
               <p className="fd-body">
-                We are interested in research collaboration, physical prototyping, experimental hardware
-                development, and engineering partnerships in Japan and internationally.
+                Tell us what you need to generate, sense, or control. We can discuss form factor, sensing
+                channels, energy constraints, and how the system connects to your setup, as part of our
+                development work.
               </p>
-              <div className="fd-collab-cta">
-                <a
-                  href={mailto("FUJIE DENKO inquiry")}
-                  className="fd-btn fd-btn-primary"
-                >
-                  Contact FUJIE DENKO
-                </a>
-                <a href={`mailto:${CONTACT_EMAIL}`} className="fd-mono fd-email">{CONTACT_EMAIL}</a>
-                <SocialLinks />
-              </div>
+              <a href={mailto("Custom development inquiry")} className="fd-btn fd-btn-primary">Discuss custom development</a>
+            </div>
+            <figure className="fd-custom-img">
+              <Image src={PRODUCTS.find((p) => p.slug === "research-rack-modules")!.image} alt="" placeholder="blur" sizes="(max-width: 960px) 100vw, 600px" />
+              <figcaption className="fd-mono">Concept rendering</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        {/* ─── 08 Contact: two routes (inquiries / collaboration) ─────────── */}
+        <section id="contact" className="fd-ssection fd-ssection-tint" aria-labelledby="fd-col-h">
+          <div className="fd-wrap">
+            <p className="fd-label fd-mono">08 / CONTACT</p>
+            <h2 id="fd-col-h" className="fd-h2s fd-contact-h">Building the next generation of physical systems.</h2>
+            <ul className="fd-routes">
+              {CONTACT_ROUTES.map((r) => {
+                const p = PRODUCTS.find((x) => x.slug === r.img)!;
+                return (
+                  <li key={r.title}>
+                    <a href={mailto(r.subject)} className="fd-route">
+                      <span className="fd-mono fd-route-k">{r.kicker}</span>
+                      <h3 className="fd-route-h">{r.title}</h3>
+                      <p>{r.body}</p>
+                      <div className="fd-route-img">
+                        <Image src={p.image} alt="" placeholder="blur" sizes="(max-width: 960px) 100vw, 600px" />
+                      </div>
+                      <span className="fd-route-cta">{r.cta} <span aria-hidden="true">→</span></span>
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+            <div className="fd-contact-foot">
+              <a href={`mailto:${CONTACT_EMAIL}`} className="fd-mono fd-email">{CONTACT_EMAIL}</a>
+              <SocialLinks />
             </div>
           </div>
         </section>

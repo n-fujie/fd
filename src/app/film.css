@@ -6,3 +6,27 @@
 .fd-root .fd-film video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #000; }
 .fd-root .fd-film figcaption { margin-top: 12px; font-size: 0.66rem; color: rgba(255, 255, 255, 0.6); }
 
+
+/* XELA-style custom band + contact route cards */
+.fd-root .fd-custom { padding: clamp(56px, 8vw, 112px) 0; border-bottom: 1px solid var(--fd-rule); }
+.fd-root .fd-custom-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(32px, 5vw, 72px); align-items: center; }
+.fd-root .fd-custom .fd-body { margin: 20px 0 28px; max-width: 520px; }
+.fd-root .fd-custom-img { margin: 0; background: #f4f5f7; border: 1px solid var(--fd-rule); }
+.fd-root .fd-custom-img img { display: block; width: 100%; height: auto; }
+.fd-root .fd-custom-img figcaption { padding: 8px 12px; font-size: 0.6rem; color: var(--fd-mid); background: #fff; border-top: 1px solid var(--fd-rule); }
+.fd-root .fd-contact-h { margin-bottom: 28px; max-width: 22ch; }
+.fd-root .fd-routes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.fd-root .fd-route { display: flex; flex-direction: column; height: 100%; padding: 28px 28px 24px; background: #fff; border: 1px solid var(--fd-rule); border-radius: 14px; text-decoration: none; overflow: hidden; transition: border-color 120ms ease; }
+.fd-root .fd-route:hover { border-color: var(--fd-ink); }
+.fd-root .fd-route-k { color: var(--fd-accent); font-weight: 600; }
+.fd-root .fd-route-h { margin: 12px 0 10px; font-size: clamp(1.3rem, 2.2vw, 1.75rem); line-height: 1.2; font-weight: 700; letter-spacing: -0.01em; }
+.fd-root .fd-route p { color: var(--fd-mid); line-height: 1.6; }
+.fd-root .fd-route-img { margin: 24px -28px 20px; aspect-ratio: 16 / 9; overflow: hidden; background: #f4f5f7; }
+.fd-root .fd-route-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 300ms ease; }
+.fd-root .fd-route:hover .fd-route-img img { transform: scale(1.03); }
+.fd-root .fd-route-cta { margin-top: auto; font-weight: 700; font-size: 1rem; }
+.fd-root .fd-route:hover .fd-route-cta { color: var(--fd-accent); }
+.fd-root .fd-contact-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; margin-top: 24px; }
+@media (max-width: 960px) {
+  .fd-root .fd-custom-grid, .fd-root .fd-routes { grid-template-columns: minmax(0, 1fr); }
+}
