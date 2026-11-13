@@ -641,10 +641,7 @@ html, body { margin: 0; background: #ffffff; }
 .fd-legal-dl > div { grid-template-columns: 200px minmax(0, 1fr); padding: 16px 0; }
 .fd-legal-dl dt { font-size: 0.85rem; font-weight: 600; color: var(--fd-ink); padding-top: 1px; }
 .fd-legal-dl dd { font-weight: 400; line-height: 1.7; }
-.fd-legal-h span { display: block; margin-top: 6px; font-size: 0.95rem; font-weight: 500; color: var(--fd-mid); letter-spacing: 0.04em; }
 .fd-legal-intro { margin-top: 12px !important; color: var(--fd-mid); font-size: 0.95rem; }
-.fd-legal-dl dt span { display: block; margin-top: 2px; font-size: 0.78rem; font-weight: 400; color: var(--fd-mid); }
-.fd-legal-ja { margin-top: 6px !important; color: var(--fd-mid); font-size: 0.88rem; }
 .fd-legal-dl a { color: var(--fd-accent); }
 .fd-pd-desc h2 { margin: 0 0 10px; font-size: 0.7rem; color: var(--fd-mid); font-weight: 600; }
 .fd-pd-desc p { font-size: 1rem; line-height: 1.65; }

@@ -65,7 +65,7 @@ export function SiteFooter() {
             <li><Link href="/#research">Research</Link></li>
             <li><Link href="/#contact">Contact</Link></li>
             <li><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></li>
-            <li><Link href={LEGAL_PATH}>Legal notice (特定商取引法に基づく表記)</Link></li>
+            <li><Link href={LEGAL_PATH}>Legal notice</Link></li>
             <li><a href={PLATO_SITE}>Plato Design Lab</a></li>
           </ul>
         </nav>

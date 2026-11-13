@@ -14,6 +14,9 @@ const csp = [
 
 module.exports = {
   poweredByHeader: false,
+  async redirects() {
+    return [{ source: "/tokushoho", destination: "/legal", permanent: true }];
+  },
   async headers() {
     return [
       {

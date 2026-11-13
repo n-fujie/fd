@@ -11,13 +11,15 @@ export const CONTACT_EMAIL = "philaicontact@icloud.com";
 export const PLATO_SITE = "https://www.platodesignlab.com";
 
 /** Operating entity (confirmed by the owner, 2026-11-13). */
-export const OPERATING_ENTITY_LEGAL_NAME: string | null = "合同会社TERRA";
+export const OPERATING_ENTITY_LEGAL_NAME: string | null = "Godo Kaisha TERRA";
 
-/** Seller disclosure for the 特定商取引法に基づく表記 page. */
+/** Seller disclosure for the Legal Notice page (/legal). */
 export const SELLER = {
   name: "合同会社TERRA",
+  nameEn: "Godo Kaisha TERRA",
   representative: "NAOTO FUJIE",
   address: "東京都世田谷区代田5丁目",
+  addressEn: "Daita 5-chome, Setagaya-ku, Tokyo, Japan",
 };
 
 export const NAV = [
@@ -27,7 +29,7 @@ export const NAV = [
   { label: "Contact", href: "/#contact" },
 ];
 
-export const LEGAL_PATH = "/tokushoho";
+export const LEGAL_PATH = "/legal";
 
 export function mailto(subject: string) {
   return `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}`;
