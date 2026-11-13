@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { AnnounceBar, SiteHeader, SiteFooter, ProductGrid } from "./chrome";
-import { CATEGORIES, HERO_IMAGE, PRODUCTS, productsIn } from "./catalog";
+import { AnnounceBar, SiteHeader, SiteFooter, ProductGrid, UpdatesBand } from "./chrome";
+import { CATEGORIES, HERO_IMAGE, PRODUCTS, productsIn, type CategoryId } from "./catalog";
 import { CONTACT_EMAIL, PLATO_SITE, SITE_URL, mailto } from "./site";
 import "./denko.css";
 
@@ -28,6 +28,34 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
   },
 };
+
+/* Intended uses (design intent, not existing customers or deployments). */
+const APPLICATIONS: { title: string; body: string; cat: CategoryId; img: string }[] = [
+  {
+    title: "Research labs",
+    body: "Platforms for experiments that couple energy harvesting, tactile sensing, and spiking-network control.",
+    cat: "robotics",
+    img: "tactile-robotic-hand",
+  },
+  {
+    title: "Teaching & prototyping",
+    body: "Hardware with exposed mechanisms and electronics, designed to be opened, inspected, and measured.",
+    cat: "energy",
+    img: "hand-crank-generator",
+  },
+  {
+    title: "Built environment",
+    body: "Building-scale sensing and control, from instrumented facades to multi-channel observation racks.",
+    cat: "systems",
+    img: "instrumented-louver-facade",
+  },
+];
+
+const ORDERING = [
+  { title: "Get notified", body: "Tell us which products interest you. We write when one moves to pre-order or sale." },
+  { title: "Order online", body: "A released product's page shows its price and a Buy button. Payment is handled securely by Stripe." },
+  { title: "Shipped from Tokyo", body: "Orders ship from Japan. Import duties and taxes in your country may apply." },
+];
 
 const FEATURED = [
   "observation-rack",
@@ -115,11 +143,29 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ─── 01 Lineup ─────────────────────────────────────────────────── */}
+        <section id="products" className="fd-ssection fd-ssection-tint" aria-labelledby="fd-line-h">
+          <div className="fd-wrap">
+            <p className="fd-label fd-mono">01 / LINEUP</p>
+            <div className="fd-shead">
+              <h2 id="fd-line-h" className="fd-h2s">In development</h2>
+              <Link href="/products" className="fd-shead-link">View all {PRODUCTS.length} →</Link>
+            </div>
+            <ProductGrid products={featured} />
+            <p className="fd-catalog-note">
+              <strong>About this catalog.</strong> Images are concept renderings, not photographs. None of the
+              products shown has been built, tested, or offered for sale, and no specifications or performance
+              are claimed. Each product page will show price and ordering only once that product is actually
+              available.
+            </p>
+          </div>
+        </section>
+
         {/* ─── Categories ────────────────────────────────────────────────── */}
         <section className="fd-ssection" aria-labelledby="fd-cat-h">
           <div className="fd-wrap">
             <div className="fd-shead">
-              <h2 id="fd-cat-h" className="fd-h2s">Shop by category</h2>
+              <h2 id="fd-cat-h" className="fd-h2s">Browse by category</h2>
               <Link href="/products" className="fd-shead-link">All products →</Link>
             </div>
             <ul className="fd-cats">
@@ -144,28 +190,38 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ─── 01 Lineup ─────────────────────────────────────────────────── */}
-        <section id="products" className="fd-ssection fd-ssection-tint" aria-labelledby="fd-line-h">
+        {/* ─── 02 Applications ──────────────────────────────────────────── */}
+        <section id="applications" className="fd-ssection" aria-labelledby="fd-app-h">
           <div className="fd-wrap">
-            <p className="fd-label fd-mono">01 / LINEUP</p>
+            <p className="fd-label fd-mono">02 / APPLICATIONS</p>
             <div className="fd-shead">
-              <h2 id="fd-line-h" className="fd-h2s">In development</h2>
-              <Link href="/products" className="fd-shead-link">View all {PRODUCTS.length} →</Link>
+              <h2 id="fd-app-h" className="fd-h2s">Built for</h2>
+              <p className="fd-shead-sub">Intended uses of the lineup.</p>
             </div>
-            <ProductGrid products={featured} />
-            <p className="fd-catalog-note">
-              <strong>About this catalog.</strong> Images are concept renderings, not photographs. None of the
-              products shown has been built, tested, or offered for sale, and no specifications or performance
-              are claimed. Each product page will show price and ordering only once that product is actually
-              available.
-            </p>
+            <ul className="fd-apps">
+              {APPLICATIONS.map((a) => {
+                const p = PRODUCTS.find((x) => x.slug === a.img)!;
+                return (
+                  <li key={a.title}>
+                    <Link href={`/products#${a.cat}`} className="fd-app">
+                      <div className="fd-app-img">
+                        <Image src={p.image} alt="" placeholder="blur" sizes="(max-width: 960px) 100vw, 400px" />
+                      </div>
+                      <h3 className="fd-app-h">{a.title}</h3>
+                      <p>{a.body}</p>
+                      <span className="fd-app-more">See products →</span>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
         </section>
 
         {/* ─── 01 Technology ─────────────────────────────────────────────── */}
         <section id="technology" className="fd-section" aria-labelledby="fd-tech-h">
           <div className="fd-wrap">
-            <p className="fd-label fd-mono">02 / TECHNOLOGY</p>
+            <p className="fd-label fd-mono">03 / TECHNOLOGY</p>
             <h2 id="fd-tech-h" className="fd-h2">Core technologies</h2>
             <ol className="fd-cards">
               {TECHNOLOGIES.map((t) => (
@@ -188,7 +244,7 @@ export default function Home() {
         {/* ─── 02 Development ────────────────────────────────────────────── */}
         <section id="development" className="fd-section" aria-labelledby="fd-dev-h">
           <div className="fd-wrap">
-            <p className="fd-label fd-mono">03 / DEVELOPMENT</p>
+            <p className="fd-label fd-mono">04 / DEVELOPMENT</p>
             <div className="fd-split">
               <div>
                 <h2 id="fd-dev-h" className="fd-h2">From theory to physical systems.</h2>
@@ -243,10 +299,30 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ─── 05 Ordering ───────────────────────────────────────────────── */}
+        <section id="ordering" className="fd-ssection fd-ssection-tint" aria-labelledby="fd-ord-h">
+          <div className="fd-wrap">
+            <p className="fd-label fd-mono">05 / ORDERING</p>
+            <div className="fd-shead">
+              <h2 id="fd-ord-h" className="fd-h2s">How ordering works</h2>
+              <Link href="/legal" className="fd-shead-link">Payment, shipping &amp; returns →</Link>
+            </div>
+            <ol className="fd-steps">
+              {ORDERING.map((o, i) => (
+                <li key={o.title}>
+                  <span className="fd-mono fd-step-no">{String(i + 1).padStart(2, "0")}</span>
+                  <h3 className="fd-step-h">{o.title}</h3>
+                  <p>{o.body}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
         {/* ─── 04 Research ───────────────────────────────────────────────── */}
         <section id="research" className="fd-section" aria-labelledby="fd-res-h">
           <div className="fd-wrap">
-            <p className="fd-label fd-mono">04 / RESEARCH</p>
+            <p className="fd-label fd-mono">06 / RESEARCH</p>
             <div className="fd-split">
               <div>
                 <h2 id="fd-res-h" className="fd-h2">Research-driven engineering.</h2>
@@ -287,7 +363,7 @@ export default function Home() {
         {/* ─── 05 Collaboration ──────────────────────────────────────────── */}
         <section id="contact" className="fd-section fd-collab" aria-labelledby="fd-col-h">
           <div className="fd-wrap">
-            <p className="fd-label fd-mono">05 / COLLABORATION</p>
+            <p className="fd-label fd-mono">07 / CONTACT</p>
             <h2 id="fd-col-h" className="fd-h2 fd-h2-wide">
               Building the next generation of physical systems.
             </h2>
@@ -310,6 +386,7 @@ export default function Home() {
         </section>
       </main>
 
+      <UpdatesBand />
       <SiteFooter />
     </div>
   );

@@ -24,9 +24,9 @@ export const SELLER = {
 
 export const NAV = [
   { label: "Products", href: "/products" },
+  { label: "Applications", href: "/#applications" },
   { label: "Technology", href: "/#technology" },
   { label: "Research", href: "/#research" },
-  { label: "Contact", href: "/#contact" },
 ];
 
 export const LEGAL_PATH = "/legal";
@@ -34,3 +34,5 @@ export const LEGAL_PATH = "/legal";
 export function mailto(subject: string) {
   return `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}`;
 }
+
+export const UPDATES_SUBJECT = "FUJIE DENKO release updates";

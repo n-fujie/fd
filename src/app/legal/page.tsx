@@ -44,7 +44,7 @@ export default function LegalNotice() {
             <p className="fd-legal-intro">Seller information and terms of sale.</p>
             <dl className="fd-dl fd-legal-dl">
               {ROWS.map((r) => (
-                <div key={r.k}>
+                <div key={r.k} id={r.k.startsWith("Returns") ? "returns" : r.k === "Delivery" ? "delivery" : undefined}>
                   <dt>{r.k}</dt>
                   <dd>{r.v}</dd>
                 </div>

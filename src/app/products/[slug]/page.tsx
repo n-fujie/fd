@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { AnnounceBar, SiteHeader, SiteFooter, ProductGrid, StageBadge, PriceLine } from "../../chrome";
-import { PRODUCTS, STAGE_NOTE, categoryName, getProduct, stripeUrl } from "../../catalog";
+import { AnnounceBar, SiteHeader, SiteFooter, ProductGrid, StageBadge, PriceLine, UpdatesBand } from "../../chrome";
+import { PRODUCTS, STAGE_NOTE, categoryName, getProduct, isPurchasable, stripeUrl } from "../../catalog";
 import { SITE_URL, LEGAL_PATH, mailto } from "../../site";
 import "../../denko.css";
 
@@ -37,7 +37,7 @@ export default async function ProductPage({ params }: Props) {
   const sameCat = PRODUCTS.filter((x) => x.category === p.category && x.slug !== p.slug);
   const others = PRODUCTS.filter((x) => x.category !== p.category);
   const related = [...sameCat, ...others].slice(0, 4);
-  const available = p.stage === "available" && p.price;
+  const available = isPurchasable(p);
   const buyUrl = stripeUrl(p);
 
   return (
@@ -73,7 +73,7 @@ export default async function ProductPage({ params }: Props) {
                 {buyUrl ? (
                   <>
                     <a href={buyUrl} className="fd-btn fd-btn-primary fd-btn-block" target="_blank" rel="noreferrer">
-                      Buy now
+                      {p.stage === "preorder" ? `Pre-order · ${p.price}` : "Buy now"}
                     </a>
                     <p className="fd-pd-secure">
                       Secure checkout by Stripe. Opens in a new tab. <Link href={LEGAL_PATH}>Legal notice</Link>
@@ -109,6 +109,35 @@ export default async function ProductPage({ params }: Props) {
           </article>
         </div>
 
+
+        <section className="fd-ssection" aria-labelledby="fd-faq-h">
+          <div className="fd-wrap fd-faq-wrap">
+            <h2 id="fd-faq-h" className="fd-h2s">Questions</h2>
+            <div className="fd-faq">
+              <details>
+                <summary>Can I buy this now?</summary>
+                <p>{STAGE_NOTE[p.stage]} {available ? "" : "When it can be ordered, this page will show the price and a Buy button."}</p>
+              </details>
+              <details>
+                <summary>How will I know when it is available?</summary>
+                <p>Use “Notify me when available” above, or get release updates for the whole lineup. We write when a product moves to pre-order or sale.</p>
+              </details>
+              <details>
+                <summary>Where do you ship?</summary>
+                <p>We plan to sell internationally from Tokyo, Japan. Shipping destinations and costs will be shown on each product page at release. Import duties and taxes in your country may apply.</p>
+              </details>
+              <details>
+                <summary>How is payment handled?</summary>
+                <p>Checkout is handled by Stripe. FUJIE DENKO does not see or store your card details.</p>
+              </details>
+              <details>
+                <summary>What is your returns policy?</summary>
+                <p>See <Link href="/legal#returns">Shipping &amp; returns</Link> in our legal notice.</p>
+              </details>
+            </div>
+          </div>
+        </section>
+
         <section className="fd-ssection fd-ssection-tint" aria-labelledby="fd-rel-h">
           <div className="fd-wrap">
             <div className="fd-shead">
@@ -119,6 +148,7 @@ export default async function ProductPage({ params }: Props) {
           </div>
         </section>
       </main>
+      <UpdatesBand />
       <SiteFooter />
     </div>
   );

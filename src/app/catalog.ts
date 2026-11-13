@@ -17,24 +17,27 @@ import louverFacade from "../../public/concepts/louver-facade.webp";
  * concept rendering: not built, not tested, not for sale.
  *
  * When a product is genuinely released:
- *   1. set `stage` to "available" and `price` to the confirmed price;
+ *   1. set `stage` to "available" (or "preorder" with a confirmed ship date in
+ *      the description) and `price` to the confirmed price;
  *   2. replace `image` with photographs of the real device;
  *   3. add only specifications that have been measured.
  * Seller disclosure lives at /legal (src/app/legal/page.tsx): when the first
  * product goes on sale, update its Sales status, shipping and Delivery rows.
  */
 
-export type Stage = "concept" | "prototype" | "available";
+export type Stage = "concept" | "prototype" | "preorder" | "available";
 
 export const STAGE_LABEL: Record<Stage, string> = {
   concept: "Concept",
   prototype: "Prototype",
+  preorder: "Pre-order",
   available: "Available",
 };
 
 export const STAGE_NOTE: Record<Stage, string> = {
   concept: "Concept rendering. Not built, not tested, not for sale.",
   prototype: "Prototype under test. Not for sale.",
+  preorder: "Open for pre-order. Ships on the date stated on this page.",
   available: "Available to order.",
 };
 
@@ -240,8 +243,12 @@ export function stripeEnvName(slug: string) {
   return `NEXT_PUBLIC_STRIPE_URL_${slug.toUpperCase().replace(/-/g, "_")}`;
 }
 
+export function isPurchasable(p: Product) {
+  return (p.stage === "available" || p.stage === "preorder") && !!p.price;
+}
+
 export function stripeUrl(p: Product): string | null {
-  if (p.stage !== "available" || !p.price) return null;
+  if (!isPurchasable(p)) return null;
   const url = process.env[stripeEnvName(p.slug)];
   return url && url.startsWith("https://") ? url : null;
 }

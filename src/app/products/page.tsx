@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { AnnounceBar, SiteHeader, SiteFooter, ProductGrid } from "../chrome";
+import { AnnounceBar, SiteHeader, SiteFooter, ProductGrid, UpdatesBand } from "../chrome";
 import { CATEGORIES, PRODUCTS, productsIn } from "../catalog";
-import { SITE_URL, mailto } from "../site";
+import { SITE_URL } from "../site";
 import "../denko.css";
 
 const TITLE = "Products | FUJIE DENKO";
@@ -57,19 +57,8 @@ export default function ProductsPage() {
           </section>
         ))}
 
-        <section className="fd-ssection fd-ssection-tint">
-          <div className="fd-wrap fd-updates">
-            <div>
-              <h2 className="fd-h2s">Release updates</h2>
-              <p className="fd-body">
-                Want to hear when a product moves to prototype or becomes available? Send us a note and tell us
-                which items interest you.
-              </p>
-            </div>
-            <a href={mailto("FUJIE DENKO release updates")} className="fd-btn fd-btn-primary">Get release updates</a>
-          </div>
-        </section>
       </main>
+      <UpdatesBand />
       <SiteFooter />
     </div>
   );
