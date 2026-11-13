@@ -161,7 +161,7 @@ export default function Home() {
                 <source src="/video/fd-promo-720p.mp4" type="video/mp4" />
               </video>
               <figcaption id="fd-film-cap" className="fd-mono">
-                All devices shown are concept renderings · Not built, not tested, not for sale · No audio
+                All devices shown are concept renderings · Not built, not tested, not for sale
               </figcaption>
             </figure>
           </div>
