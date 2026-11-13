@@ -19,6 +19,7 @@ src/app/
   site.ts                Contact, nav, OPERATING_ENTITY_LEGAL_NAME
   chrome.tsx             Header, footer, announce bar, product card
   order/thanks/          Stripe Payment Link redirect destination
+  tokushoho/             特定商取引法に基づく表記
   denko.css              Styles (scoped to .fd-root)
   MobileMenu.tsx         Mobile menu (<details>; closes on link tap)
   opengraph-image.tsx    1200×630 share image (twitter-image re-exports it)
@@ -50,8 +51,8 @@ Checkout uses **Stripe Payment Links** (same pattern as platodesignlab.com Retur
 
 The "Buy now" button appears only when all three are in place; otherwise the page falls back to email. When a product is actually released, follow the checklist at the top of `src/app/catalog.ts`: set the stage and price, use real photographs, and publish the 特定商取引法に基づく表記 page before taking any order.
 
-## Open item
+## Operator & legal
 
-`OPERATING_ENTITY_LEGAL_NAME` in `src/app/page.tsx` stays `null` until the registered name of the operating gōdō kaisha is confirmed. While it is `null`, no operating-entity line is rendered.
+Operated by 合同会社TERRA (`OPERATING_ENTITY_LEGAL_NAME` / `SELLER` in `src/app/site.ts`). The 特定商取引法に基づく表記 page is at `/tokushoho` (`src/app/tokushoho/page.tsx`); update its 販売状況, 送料 and 引渡時期 rows when the first product goes on sale.
 
 © 2026 FUJIE DENKO

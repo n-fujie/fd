@@ -4,7 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AnnounceBar, SiteHeader, SiteFooter, ProductGrid, StageBadge, PriceLine } from "../../chrome";
 import { PRODUCTS, STAGE_NOTE, categoryName, getProduct, stripeUrl } from "../../catalog";
-import { SITE_URL, mailto } from "../../site";
+import { SITE_URL, LEGAL_PATH, mailto } from "../../site";
 import "../../denko.css";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -75,7 +75,9 @@ export default async function ProductPage({ params }: Props) {
                     <a href={buyUrl} className="fd-btn fd-btn-primary fd-btn-block" target="_blank" rel="noreferrer">
                       Buy now
                     </a>
-                    <p className="fd-pd-secure">Secure checkout by Stripe. Opens in a new tab.</p>
+                    <p className="fd-pd-secure">
+                      Secure checkout by Stripe. Opens in a new tab. <Link href={LEGAL_PATH}>特定商取引法に基づく表記</Link>
+                    </p>
                   </>
                 ) : available ? (
                   <a href={mailto(`Order inquiry: ${p.name}`)} className="fd-btn fd-btn-primary fd-btn-block">Order inquiry</a>

@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import fdMark from "../../public/fd-mark.png";
 import MobileMenu from "./MobileMenu";
-import { NAV, OPERATING_ENTITY_LEGAL_NAME, PLATO_SITE, CONTACT_EMAIL } from "./site";
+import { NAV, OPERATING_ENTITY_LEGAL_NAME, PLATO_SITE, CONTACT_EMAIL, LEGAL_PATH } from "./site";
 import { CATEGORIES, STAGE_LABEL, categoryName, type Product, type Stage } from "./catalog";
 
 /** Site-wide notice: nothing in the catalog can be bought yet. */
@@ -65,6 +65,7 @@ export function SiteFooter() {
             <li><Link href="/#research">Research</Link></li>
             <li><Link href="/#contact">Contact</Link></li>
             <li><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></li>
+            <li><Link href={LEGAL_PATH}>特定商取引法に基づく表記</Link></li>
             <li><a href={PLATO_SITE}>Plato Design Lab</a></li>
           </ul>
         </nav>

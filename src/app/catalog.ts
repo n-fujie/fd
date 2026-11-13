@@ -20,9 +20,8 @@ import louverFacade from "../../public/concepts/louver-facade.webp";
  *   1. set `stage` to "available" and `price` to the confirmed price;
  *   2. replace `image` with photographs of the real device;
  *   3. add only specifications that have been measured.
- * Before taking any order, publish the 特定商取引法に基づく表記 page
- * (seller legal name, address, contact, returns) — it needs the confirmed
- * OPERATING_ENTITY_LEGAL_NAME.
+ * Seller disclosure lives at /tokushoho (src/app/tokushoho/page.tsx): when the
+ * first product goes on sale, update its 販売状況, 送料 and 引渡時期 rows.
  */
 
 export type Stage = "concept" | "prototype" | "available";
