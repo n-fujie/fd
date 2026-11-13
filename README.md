@@ -12,7 +12,12 @@ Next.js 15 (App Router), React 19, TypeScript. No other runtime dependencies. Al
 ```
 src/app/
   layout.tsx             Root layout (metadataBase)
-  page.tsx               The single page + SEO / Open Graph metadata
+  page.tsx               Home: storefront hero, categories, lineup, technology, research, contact
+  products/page.tsx      Product catalog by category
+  products/[slug]/       Product detail pages (static, one per catalog item)
+  catalog.ts             Product data: stage, price, images. Edit here to add or release products
+  site.ts                Contact, nav, OPERATING_ENTITY_LEGAL_NAME
+  chrome.tsx             Header, footer, announce bar, product card
   denko.css              Styles (scoped to .fd-root)
   MobileMenu.tsx         Mobile menu (<details>; closes on link tap)
   opengraph-image.tsx    1200×630 share image (twitter-image re-exports it)
@@ -31,6 +36,10 @@ npm install
 npm run dev     # http://localhost:3000
 npm run build
 ```
+
+## Releasing a product
+
+Every catalog item currently has `stage: "concept"` and `price: null`, so it shows "Not yet for sale" and a "Notify me" email button. There is no cart or checkout. When a product is actually released, follow the checklist at the top of `src/app/catalog.ts`: set the stage and price, use real photographs, and publish the 特定商取引法に基づく表記 page before taking any order.
 
 ## Open item
 
