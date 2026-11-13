@@ -164,7 +164,7 @@ export default function Home() {
         <section id="film" className="fd-film" aria-labelledby="fd-film-h">
           <div className="fd-wrap">
             <p className="fd-label fd-mono">FILM</p>
-            <h2 id="fd-film-h" className="fd-film-h">The FD lineup in 48 seconds</h2>
+            <h2 id="fd-film-h" className="fd-film-h">The FD lineup in 35 seconds</h2>
             <figure className="fd-film-frame">
               <video
                 controls
