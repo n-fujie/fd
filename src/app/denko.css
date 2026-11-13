@@ -723,3 +723,23 @@ html, body { margin: 0; background: #ffffff; }
   .fd-footer-grid { grid-template-columns: minmax(0, 1fr); }
   .fd-updband .fd-btn { width: 100%; }
 }
+
+/* ─── Long-form legal documents (/privacy, /terms) ─────────────────────── */
+.fd-doc { max-width: 760px; }
+.fd-doc-updated { margin-top: 12px !important; color: var(--fd-mid); font-size: 0.66rem; }
+.fd-doc-intro { margin-top: 24px; font-size: 1.05rem; line-height: 1.65; }
+.fd-doc-toc { margin: 32px 0 8px; padding: 20px 22px; background: var(--fd-tint); }
+.fd-doc-toc > p { color: var(--fd-mid); font-size: 0.66rem; margin-bottom: 10px !important; }
+.fd-doc-toc ol { columns: 2; column-gap: 32px; }
+.fd-doc-toc li { padding: 3px 0; break-inside: avoid; }
+.fd-doc-toc a { font-size: 0.9rem; text-decoration: none; }
+.fd-doc-toc a:hover { color: var(--fd-accent); }
+.fd-doc-sec { padding-top: 32px; scroll-margin-top: calc(var(--fd-header-h) + 16px); }
+.fd-root .fd-doc-sec h2 { margin: 0 0 12px; font-size: 1.15rem; font-weight: 700; letter-spacing: -0.005em; }
+.fd-doc-sec p, .fd-doc-sec li { font-size: 0.98rem; line-height: 1.7; }
+.fd-doc-sec p + p, .fd-doc-sec ul + p, .fd-doc-sec p + ul { margin-top: 12px !important; }
+.fd-root .fd-doc-sec ul { list-style: disc; padding-left: 22px; }
+.fd-doc-sec li + li { margin-top: 6px; }
+.fd-doc a { color: var(--fd-accent); }
+.fd-doc-foot { margin-top: 48px !important; padding-top: 20px; border-top: 1px solid var(--fd-rule); color: var(--fd-mid); font-size: 0.9rem; }
+@media (max-width: 560px) { .fd-doc-toc ol { columns: 1; } }

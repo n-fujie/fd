@@ -89,7 +89,7 @@ export function SiteFooter() {
           <p className="fd-mono fd-footer-h">Support</p>
           <ul>
             <li><Link href="/#ordering">How ordering works</Link></li>
-            <li><Link href={`${LEGAL_PATH}#returns`}>Shipping &amp; returns</Link></li>
+            <li><Link href="/terms#shipping">Shipping &amp; returns</Link></li>
             <li><Link href="/#contact">Contact</Link></li>
             <li><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></li>
           </ul>
@@ -99,6 +99,8 @@ export function SiteFooter() {
         <span>© 2026 FUJIE DENKO</span>
         <span className="fd-footer-legal">
           <Link href={LEGAL_PATH}>Legal notice</Link>
+          <Link href="/terms">Terms of sale</Link>
+          <Link href="/privacy">Privacy</Link>
           <span>Research &amp; prototyping stage</span>
         </span>
       </div>

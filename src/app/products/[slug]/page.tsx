@@ -76,7 +76,7 @@ export default async function ProductPage({ params }: Props) {
                       {p.stage === "preorder" ? `Pre-order · ${p.price}` : "Buy now"}
                     </a>
                     <p className="fd-pd-secure">
-                      Secure checkout by Stripe. Opens in a new tab. <Link href={LEGAL_PATH}>Legal notice</Link>
+                      Secure checkout by Stripe. Opens in a new tab. <Link href="/terms">Terms of sale</Link> · <Link href={LEGAL_PATH}>Legal notice</Link>
                     </p>
                   </>
                 ) : available ? (
@@ -128,11 +128,11 @@ export default async function ProductPage({ params }: Props) {
               </details>
               <details>
                 <summary>How is payment handled?</summary>
-                <p>Checkout is handled by Stripe. FUJIE DENKO does not see or store your card details.</p>
+                <p>Checkout is handled by Stripe. FUJIE DENKO does not see or store your card details. See our <Link href="/privacy">privacy policy</Link> and <Link href="/terms">terms of sale</Link>.</p>
               </details>
               <details>
                 <summary>What is your returns policy?</summary>
-                <p>See <Link href="/legal#returns">Shipping &amp; returns</Link> in our legal notice.</p>
+                <p>See <Link href="/terms#returns">Returns and refunds</Link> in our terms of sale.</p>
               </details>
             </div>
           </div>
