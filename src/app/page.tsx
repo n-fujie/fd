@@ -4,6 +4,7 @@ import Link from "next/link";
 import { AnnounceBar, SiteHeader, SiteFooter, ProductGrid, UpdatesBand, SocialLinks } from "./chrome";
 import { CATEGORIES, HERO_IMAGE, PRODUCTS, productsIn, type CategoryId } from "./catalog";
 import { CONTACT_EMAIL, PLATO_SITE, SITE_URL, SOCIAL, OPERATING_ENTITY_LEGAL_NAME, mailto } from "./site";
+import founderPortrait from "../../public/founder/naoto-fujie.webp";
 import "./denko.css";
 import "./film.css";
 
@@ -436,11 +437,23 @@ export default function Home() {
 
         {/* ─── Founder (XELA-style founder block) ─────────────────────────── */}
         <section id="founder" className="fd-founder" aria-labelledby="fd-fnd-h">
+          <div className="fd-wrap">
+            <figure className="fd-founder-photo">
+              <Image
+                src={founderPortrait}
+                alt="Portrait of Naoto Fujie in front of bookshelves"
+                placeholder="blur"
+                sizes="(max-width: 1240px) 100vw, 1144px"
+              />
+              <figcaption className="fd-founder-over">
+                <p className="fd-label fd-mono">FOUNDER</p>
+                <h2 id="fd-fnd-h" className="fd-founder-name">Naoto Fujie</h2>
+                <p className="fd-founder-role">Philosopher</p>
+              </figcaption>
+            </figure>
+          </div>
           <div className="fd-wrap fd-founder-grid">
             <div className="fd-founder-id">
-              <p className="fd-label fd-mono">FOUNDER</p>
-              <h2 id="fd-fnd-h" className="fd-founder-name">Naoto Fujie</h2>
-              <p className="fd-founder-role">Philosopher</p>
               <p className="fd-mono fd-founder-meta">
                 Founder of P/A Institute · Representative, Godo Kaisha TERRA
               </p>

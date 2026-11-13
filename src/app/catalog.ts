@@ -15,6 +15,7 @@ import humanoidTestRig from "../../public/concepts/humanoid-test-rig.webp";
 import researchRackModules from "../../public/concepts/research-rack-modules.webp";
 import bipedalPlatform from "../../public/concepts/bipedal-platform.webp";
 import leggedTransparent from "../../public/concepts/legged-platform-transparent.webp";
+import interfaceTestStation from "../../public/concepts/interface-test-station.webp";
 
 /* ─── Product catalog ─────────────────────────────────────────────────────
  * Every listing carries its real development stage. Today every item is a
@@ -211,6 +212,19 @@ export const PRODUCTS: Product[] = [
       "An enclosed research rack with a test fixture, shown with interchangeable modules for tactile, force, inertial, EMG, and custom sensing. The interface, signals, and readouts on screen are rendered, not measured data.",
     image: researchRackModules,
     alt: "Concept rendering of a black enclosed rack marked FUJIE DENKO with a test fixture inside, a row of labelled sensor modules on a steel bench, and a monitor showing signal traces.",
+  },
+  {
+    slug: "interface-test-station",
+    ref: "C17",
+    name: "Body-Interface Test Station",
+    category: "sensing",
+    stage: "concept",
+    price: null,
+    summary: "A ring-frame cradle with a precision dispensing gantry.",
+    description:
+      "A test station combining a padded cradle inside a rotating ring frame, a gantry with a fine dispensing tip over a transparent chamber, and a bank of modular fixtures. It is not a medical device, and the setting shown is rendered, not an existing facility.",
+    image: interfaceTestStation,
+    alt: "Concept rendering of a black and steel test station marked with the FD symbol, with a padded cradle inside a ring-shaped frame, a gantry holding a fine tip over a transparent dish, and a row of modular fixtures.",
   },
   {
     slug: "humanoid-test-rig",
