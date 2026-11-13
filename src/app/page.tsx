@@ -9,6 +9,8 @@ import quadrupedB from "../../public/concepts/quadruped-b.webp";
 import generatorLarge from "../../public/concepts/generator-large.webp";
 import quadrupedC from "../../public/concepts/quadruped-c.webp";
 import tactileModule from "../../public/concepts/tactile-module.webp";
+import roboticHand from "../../public/concepts/robotic-hand.webp";
+import humanoidLab from "../../public/concepts/humanoid-lab.webp";
 import MobileMenu from "./MobileMenu";
 import "./denko.css";
 
@@ -139,6 +141,18 @@ const CONCEPTS = [
     title: "Tactile sensing module",
     caption: "A compact module with a segmented tactile surface over processing electronics and a sealed connector.",
     alt: "Concept rendering of a compact sensor module with a segmented transparent tactile surface, visible circuit boards, and a round connector.",
+  },
+  {
+    src: roboticHand,
+    title: "Tactile robotic hand",
+    caption: "A multi-joint hand touching a sensing surface, with contact data visualised on a monitor. Hand, data, and setting are all rendered.",
+    alt: "Concept rendering of a white multi-jointed robotic hand marked with the FD symbol, fingertips resting on a transparent sensing surface, with a monitor showing a hand-shaped heat map behind it.",
+  },
+  {
+    src: humanoidLab,
+    title: "Humanoid embodied platform",
+    caption: "An upper-body humanoid concept at a workbench. The laboratory shown is part of the rendering, not an existing facility.",
+    alt: "Concept rendering of a white humanoid robot with exposed cabling reaching toward electronics on a workbench, in a laboratory with an FD symbol on the wall.",
   },
 ];
 
