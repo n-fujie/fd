@@ -42,6 +42,13 @@ const ORG_JSONLD = {
   logo: `${SITE_URL}/fd-logo.png`,
   email: CONTACT_EMAIL,
   sameAs: SOCIAL.map((s) => s.href),
+  founder: {
+    "@type": "Person",
+    name: "Naoto Fujie",
+    jobTitle: "Philosopher",
+    url: "https://www.platodesignlab.com",
+    sameAs: ["https://orcid.org/0009-0003-0435-181X", "https://philpeople.org/profiles/naoto-fujie", "https://x.com/naotofujie"],
+  },
   ...(OPERATING_ENTITY_LEGAL_NAME ? { parentOrganization: { "@type": "Organization", name: OPERATING_ENTITY_LEGAL_NAME } } : {}),
 };
 
@@ -71,6 +78,14 @@ const ORDERING = [
   { title: "Get notified", body: "Tell us which products interest you. We write when one moves to pre-order or sale." },
   { title: "Order online", body: "A released product's page shows its price and a Buy button. Payment is handled securely by Stripe." },
   { title: "Shipped from Tokyo", body: "Orders ship from Japan. Import duties and taxes in your country may apply." },
+];
+
+/* Published profiles (from platodesignlab.com). */
+const FOUNDER_LINKS = [
+  { label: "Research website", href: "https://www.platodesignlab.com/about" },
+  { label: "PhilPeople", href: "https://philpeople.org/profiles/naoto-fujie" },
+  { label: "ORCID", href: "https://orcid.org/0009-0003-0435-181X" },
+  { label: "X @naotofujie", href: "https://x.com/naotofujie" },
 ];
 
 const CONTACT_ROUTES = [
@@ -415,6 +430,43 @@ export default function Home() {
                   “Theory” = theoretical or simulation-stage research. Not engineering performance data.
                 </p>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ─── Founder (XELA-style founder block) ─────────────────────────── */}
+        <section id="founder" className="fd-founder" aria-labelledby="fd-fnd-h">
+          <div className="fd-wrap fd-founder-grid">
+            <div className="fd-founder-id">
+              <p className="fd-label fd-mono">FOUNDER</p>
+              <h2 id="fd-fnd-h" className="fd-founder-name">Naoto Fujie</h2>
+              <p className="fd-founder-role">Philosopher</p>
+              <p className="fd-mono fd-founder-meta">
+                Founder of P/A Institute · Representative, Godo Kaisha TERRA
+              </p>
+              <ul className="fd-founder-links">
+                {FOUNDER_LINKS.map((l) => (
+                  <li key={l.href}>
+                    <a href={l.href} target="_blank" rel="noopener noreferrer">{l.label} <span aria-hidden="true">↗</span></a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="fd-founder-text">
+              <p className="fd-founder-lead">
+                FUJIE DENKO is a philosopher&apos;s hardware company.
+              </p>
+              <p>
+                Naoto Fujie is a philosopher and developer working as an independent researcher. Fujie&apos;s
+                research programmes, including Operational-Shape Realism, Non-Closure Realism, Xenoscience, and
+                the Ziran System, treat physical, biological, computational, and institutional reality as an open
+                field of operations rather than a set of fixed categories.
+              </p>
+              <p>
+                FUJIE DENKO is where that work meets hardware: energy, sensing, and computation approached as
+                physical operations, to be examined in built systems. Theoretical proposals and verified
+                engineering results are kept explicitly apart.
+              </p>
             </div>
           </div>
         </section>
