@@ -36,3 +36,9 @@ export function mailto(subject: string) {
 }
 
 export const UPDATES_SUBJECT = "FUJIE DENKO release updates";
+
+/** Official social accounts (provided by the owner, 2026-11-13). */
+export const SOCIAL = [
+  { id: "x", label: "X", handle: "@fujiedenko", href: "https://x.com/fujiedenko" },
+  { id: "instagram", label: "Instagram", handle: "@fujiedenko", href: "https://www.instagram.com/fujiedenko" },
+] as const;

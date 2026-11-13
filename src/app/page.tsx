@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { AnnounceBar, SiteHeader, SiteFooter, ProductGrid, UpdatesBand } from "./chrome";
+import { AnnounceBar, SiteHeader, SiteFooter, ProductGrid, UpdatesBand, SocialLinks } from "./chrome";
 import { CATEGORIES, HERO_IMAGE, PRODUCTS, productsIn, type CategoryId } from "./catalog";
-import { CONTACT_EMAIL, PLATO_SITE, SITE_URL, mailto } from "./site";
+import { CONTACT_EMAIL, PLATO_SITE, SITE_URL, SOCIAL, OPERATING_ENTITY_LEGAL_NAME, mailto } from "./site";
 import "./denko.css";
 import "./film.css";
 
@@ -25,9 +25,24 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
+    site: "@fujiedenko",
+    creator: "@fujiedenko",
     title: TITLE,
     description: DESCRIPTION,
   },
+};
+
+/* Organization structured data: links the site to its official accounts. */
+const ORG_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "FUJIE DENKO",
+  alternateName: "藤江電工",
+  url: `${SITE_URL}/`,
+  logo: `${SITE_URL}/fd-logo.png`,
+  email: CONTACT_EMAIL,
+  sameAs: SOCIAL.map((s) => s.href),
+  ...(OPERATING_ENTITY_LEGAL_NAME ? { parentOrganization: { "@type": "Organization", name: OPERATING_ENTITY_LEGAL_NAME } } : {}),
 };
 
 /* Intended uses (design intent, not existing customers or deployments). */
@@ -106,6 +121,7 @@ export default function Home() {
   const featured = FEATURED.map((slug) => PRODUCTS.find((p) => p.slug === slug)!);
   return (
     <div className="fd-root">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_JSONLD) }} />
       <a href="#fd-main" className="fd-skip">Skip to content</a>
       <AnnounceBar />
       <SiteHeader />
@@ -404,6 +420,7 @@ export default function Home() {
                   Contact FUJIE DENKO
                 </a>
                 <a href={`mailto:${CONTACT_EMAIL}`} className="fd-mono fd-email">{CONTACT_EMAIL}</a>
+                <SocialLinks />
               </div>
             </div>
           </div>

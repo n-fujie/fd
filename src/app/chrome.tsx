@@ -2,7 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import fdMark from "../../public/fd-mark.png";
 import MobileMenu from "./MobileMenu";
-import { NAV, OPERATING_ENTITY_LEGAL_NAME, PLATO_SITE, CONTACT_EMAIL, LEGAL_PATH, UPDATES_SUBJECT, mailto } from "./site";
+import "./social.css";
+import { NAV, OPERATING_ENTITY_LEGAL_NAME, PLATO_SITE, CONTACT_EMAIL, LEGAL_PATH, UPDATES_SUBJECT, SOCIAL, mailto } from "./site";
 import { CATEGORIES, STAGE_LABEL, categoryName, isPurchasable, type Product, type Stage } from "./catalog";
 
 /** Site-wide notice: nothing in the catalog can be bought yet. */
@@ -47,11 +48,45 @@ export function UpdatesBand() {
       <div className="fd-wrap fd-updband-inner">
         <div>
           <h2 id="fd-upd-h" className="fd-h2s">Get release updates</h2>
-          <p>Hear when a product moves to prototype, pre-order, or sale. Tell us which items interest you.</p>
+          <p>Hear when a product moves to prototype, pre-order, or sale. Tell us which items interest you, or follow @fujiedenko.</p>
+          <SocialLinks className="fd-social-band" />
         </div>
         <a href={mailto(UPDATES_SUBJECT)} className="fd-btn fd-btn-invert">Get updates</a>
       </div>
     </section>
+  );
+}
+
+function SocialIcon({ id }: { id: "x" | "instagram" }) {
+  if (id === "x") {
+    return (
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+        <path fill="currentColor" d="M17.75 3h3.07l-6.7 7.66L22 21h-6.17l-4.83-6.32L5.47 21H2.4l7.17-8.2L2 3h6.33l4.37 5.77L17.75 3Zm-1.08 16.17h1.7L7.4 4.74H5.58l11.1 14.43Z" />
+      </svg>
+    );
+  }
+  return (
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4.2" />
+      <circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+/** Links to the official X and Instagram accounts. */
+export function SocialLinks({ className = "" }: { className?: string }) {
+  return (
+    <ul className={`fd-social ${className}`} aria-label="FUJIE DENKO on social media">
+      {SOCIAL.map((s) => (
+        <li key={s.id}>
+          <a href={s.href} target="_blank" rel="noopener noreferrer me" aria-label={`FUJIE DENKO on ${s.label} (${s.handle})`}>
+            <SocialIcon id={s.id} />
+            <span>{s.label}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
   );
 }
 
@@ -66,6 +101,7 @@ export function SiteFooter() {
           {OPERATING_ENTITY_LEGAL_NAME && (
             <p className="fd-footer-meta">Operated by {OPERATING_ENTITY_LEGAL_NAME}</p>
           )}
+          <SocialLinks className="fd-social-footer" />
         </div>
         <nav aria-label="Products" className="fd-footer-col">
           <p className="fd-mono fd-footer-h">Products</p>

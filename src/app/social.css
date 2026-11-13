@@ -1,0 +1,8 @@
+/* Social links (footer, updates band, contact) */
+.fd-root .fd-social { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+.fd-root .fd-social a { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border: 1px solid var(--fd-rule); font-size: 0.85rem; font-weight: 600; text-decoration: none; color: var(--fd-ink); transition: border-color 120ms ease, color 120ms ease; }
+.fd-root .fd-social a:hover { border-color: var(--fd-accent); color: var(--fd-accent); }
+.fd-root .fd-social-footer { margin-top: 20px; }
+.fd-root .fd-social-footer a, .fd-root .fd-social-band a { color: #fff; border-color: rgba(255, 255, 255, 0.3); }
+.fd-root .fd-social-footer a:hover, .fd-root .fd-social-band a:hover { color: #fff; border-color: #fff; }
+.fd-root .fd-social-band { margin-top: 16px; }

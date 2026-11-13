@@ -5,3 +5,4 @@
 .fd-root .fd-film-frame { margin: 0; }
 .fd-root .fd-film video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #000; }
 .fd-root .fd-film figcaption { margin-top: 12px; font-size: 0.66rem; color: rgba(255, 255, 255, 0.6); }
+
