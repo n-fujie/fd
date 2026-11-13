@@ -11,6 +11,8 @@ import quadrupedC from "../../public/concepts/quadruped-c.webp";
 import tactileModule from "../../public/concepts/tactile-module.webp";
 import roboticHand from "../../public/concepts/robotic-hand.webp";
 import humanoidLab from "../../public/concepts/humanoid-lab.webp";
+import observationRack from "../../public/concepts/observation-rack.webp";
+import louverFacade from "../../public/concepts/louver-facade.webp";
 import MobileMenu from "./MobileMenu";
 import "./denko.css";
 
@@ -153,6 +155,18 @@ const CONCEPTS = [
     title: "Humanoid embodied platform",
     caption: "An upper-body humanoid concept at a workbench. The laboratory shown is part of the rendering, not an existing facility.",
     alt: "Concept rendering of a white humanoid robot with exposed cabling reaching toward electronics on a workbench, in a laboratory with an FD symbol on the wall.",
+  },
+  {
+    src: observationRack,
+    title: "Modular observation rack",
+    caption: "A portable rack of swappable sensing-channel modules, a reconfigurable observation path, and an operator console. Interface and readouts are rendered.",
+    alt: "Concept rendering of a black portable equipment rack marked FUJIE DENKO, with a row of labelled sensor-channel modules, a slide-out transparent test bay, a signal hub, and an adjoining console with a monitor and keyboard.",
+  },
+  {
+    src: louverFacade,
+    title: "Instrumented louver facade",
+    caption: "Movable louvers with a controller and environmental sensing, studied as a building-scale physical system. The space and data shown are rendered, not an existing installation.",
+    alt: "Concept rendering of a tall aluminium louver wall with a wall-mounted control box marked with the FD symbol, a sensor on a tripod, an equipment rack, and a monitor showing a colour field map.",
   },
 ];
 
