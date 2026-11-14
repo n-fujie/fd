@@ -16,6 +16,13 @@ import researchRackModules from "../../public/concepts/research-rack-modules.web
 import bipedalPlatform from "../../public/concepts/bipedal-platform.webp";
 import leggedTransparent from "../../public/concepts/legged-platform-transparent.webp";
 import interfaceTestStation from "../../public/concepts/interface-test-station.webp";
+import sensorHubPods from "../../public/concepts/sensor-hub-pods.webp";
+import probeCameraBench from "../../public/concepts/probe-camera-bench.webp";
+import dualMotorTestUnit from "../../public/concepts/dual-motor-test-unit.webp";
+import tactileHandTiles from "../../public/concepts/tactile-hand-tiles.webp";
+import pressurePadArray from "../../public/concepts/pressure-pad-array.webp";
+import wearableSensorModules from "../../public/concepts/wearable-sensor-modules.webp";
+import embodiedObservationBench from "../../public/concepts/embodied-observation-bench.webp";
 
 /* ─── Product catalog ─────────────────────────────────────────────────────
  * Every listing carries its real development stage. Today every item is a
@@ -264,6 +271,97 @@ export const PRODUCTS: Product[] = [
       "A quadruped concept with a transparent shell exposing its electronics, beside a display of spiking-network, touch, and motor signals. All data shown is rendered; markings, including the model designation, are provisional.",
     image: leggedTransparent,
     alt: "Concept rendering of a quadruped robot with a transparent body and black joints marked FUJIE DENKO, beside a monitor showing spike rasters and signal plots.",
+  },
+  {
+    slug: "dual-motor-test-unit",
+    ref: "C20",
+    name: "Dual-Motor Test Unit",
+    category: "energy",
+    stage: "concept",
+    price: null,
+    summary: "Two motors on a shared axis, with drive electronics on show.",
+    description:
+      "A symmetric aluminium unit with a motor at each end of a shared linear axis and its drive and control boards visible behind clear panels.",
+    image: dualMotorTestUnit,
+    alt: "Concept rendering of a silver aluminium unit marked with the FD symbol, with circuit boards behind clear panels and two motors at either end of a linear shaft.",
+  },
+  {
+    slug: "sensor-hub-pods",
+    ref: "C18",
+    name: "Sensor Hub & Pods",
+    category: "sensing",
+    stage: "concept",
+    price: null,
+    summary: "A central hub with four cabled sensing pods.",
+    description:
+      "A rugged hub with four connected sensing pods, each with its own controls and status light, for distributing measurements across a space or a body.",
+    image: sensorHubPods,
+    alt: "Concept rendering of a black and brushed-steel hub marked with the FD symbol, cabled to four square sensing pods, each with a round top control and a blue status light.",
+  },
+  {
+    slug: "probe-camera-bench",
+    ref: "C19",
+    name: "Probe & Camera Bench",
+    category: "sensing",
+    stage: "concept",
+    price: null,
+    summary: "A gantry probe with multi-angle cameras on a breadboard.",
+    description:
+      "A linear-rail gantry carrying a probe tip and an angled camera, with further cameras and a sample pad on an optical breadboard base.",
+    image: probeCameraBench,
+    alt: "Concept rendering of a measurement bench marked with the FD symbol, with a gantry holding a probe tip and an angled camera, two more cameras, and a small pad on a perforated aluminium base.",
+  },
+  {
+    slug: "pressure-pad-array",
+    ref: "C22",
+    name: "Pressure Pad Array",
+    category: "sensing",
+    stage: "concept",
+    price: null,
+    summary: "A 4×4 grid of soft pads with underglow.",
+    description:
+      "A compact desktop unit with sixteen soft pressure pads in a four-by-four grid and a status light.",
+    image: pressurePadArray,
+    alt: "Concept rendering of a white desktop unit with sixteen soft pads in a four-by-four grid lit blue from below, marked with the FD symbol.",
+  },
+  {
+    slug: "wearable-sensor-modules",
+    ref: "C23",
+    name: "Wearable Sensor Modules",
+    category: "sensing",
+    stage: "concept",
+    price: null,
+    summary: "Strap-mounted modules for body-worn sensing.",
+    description:
+      "Small strap-mounted modules for the chest, waist, or limbs, with USB-C charging and a status light.",
+    image: wearableSensorModules,
+    alt: "Concept rendering of two grey sensor modules marked with the FD symbol, mounted on black elastic straps, beside a coiled USB-C cable.",
+  },
+  {
+    slug: "tactile-hand-tiles",
+    ref: "C21",
+    name: "Tactile Hand & Sensor Tiles",
+    category: "robotics",
+    stage: "concept",
+    price: null,
+    summary: "A robotic hand with a tactile palm and swappable tiles.",
+    description:
+      "A multi-jointed robotic hand with a tactile palm pad and fingertip arrays, shown with stacked tactile tiles and a mounting frame.",
+    image: tactileHandTiles,
+    alt: "Concept rendering of a silver and black robotic hand marked with the FD symbol, with a gridded tactile palm pad, beside a stack of square tactile tiles and an open mounting frame.",
+  },
+  {
+    slug: "embodied-observation-bench",
+    ref: "C24",
+    name: "Embodied Observation Bench",
+    category: "systems",
+    stage: "concept",
+    price: null,
+    summary: "Body-worn sensors, force plate, compute, and projection in one bench.",
+    description:
+      "An integrated bench combining a harness of wearable sensors on a mannequin, a four-pad force plate, a compute stack, and a projector-camera table. All data and displays shown are rendered.",
+    image: embodiedObservationBench,
+    alt: "Concept rendering of a long aluminium bench marked with the FD symbol, with a mannequin wearing a sensor harness, a four-pad plate, a cabled compute stack, and a projector shining onto a table with a cube and a sphere.",
   },
   {
     slug: "instrumented-louver-facade",

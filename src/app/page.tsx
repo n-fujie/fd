@@ -5,6 +5,7 @@ import { AnnounceBar, SiteHeader, SiteFooter, ProductGrid, UpdatesBand, SocialLi
 import { CATEGORIES, HERO_IMAGE, PRODUCTS, productsIn, type CategoryId } from "./catalog";
 import { CONTACT_EMAIL, PLATO_SITE, SITE_URL, SOCIAL, OPERATING_ENTITY_LEGAL_NAME, mailto } from "./site";
 import founderPortrait from "../../public/founder/naoto-fujie.webp";
+import bookOperationalNihilism from "../../public/founder/operational-nihilism.webp";
 import "./denko.css";
 import "./film.css";
 
@@ -87,6 +88,14 @@ const FOUNDER_LINKS = [
   { label: "PhilPeople", href: "https://philpeople.org/profiles/naoto-fujie" },
   { label: "ORCID", href: "https://orcid.org/0009-0003-0435-181X" },
   { label: "X @naotofujie", href: "https://x.com/naotofujie" },
+];
+
+/* Books by the founder (titles and links as listed on platodesignlab.com). */
+const BOOKS = [
+  { title: "Operational Nihilism", year: "2026", href: "https://amzn.eu/d/08W4W72H", cover: bookOperationalNihilism },
+  { title: "Complete Animism", year: "2026", href: "https://amzn.eu/d/07PQFXz0", cover: null },
+  { title: "The Work That Remains", year: "2026", href: "https://amzn.eu/d/0iCthJqY", cover: null },
+  { title: "P/A — The Dictionary of Operational Philosophy", year: "2026", href: "https://amzn.eu/d/01SMS6W7", cover: null },
 ];
 
 const CONTACT_ROUTES = [
@@ -480,6 +489,28 @@ export default function Home() {
                 physical operations, to be examined in built systems. Theoretical proposals and verified
                 engineering results are kept explicitly apart.
               </p>
+              <div className="fd-books">
+                <p className="fd-mono fd-books-h">Books by Naoto Fujie</p>
+                <div className="fd-books-grid">
+                  {BOOKS.filter((b) => b.cover).map((b) => (
+                    <a key={b.title} href={b.href} target="_blank" rel="noopener noreferrer" className="fd-book-feature">
+                      <Image src={b.cover!} alt={`Cover of ${b.title} by Naoto Fujie`} placeholder="blur" sizes="160px" />
+                      <span className="fd-book-title">{b.title}</span>
+                      <span className="fd-mono fd-book-meta">{b.year} · Amazon ↗</span>
+                    </a>
+                  ))}
+                  <ul className="fd-book-list">
+                    {BOOKS.filter((b) => !b.cover).map((b) => (
+                      <li key={b.title}>
+                        <a href={b.href} target="_blank" rel="noopener noreferrer">
+                          <span className="fd-book-title">{b.title}</span>
+                          <span className="fd-mono fd-book-meta">{b.year} · Amazon ↗</span>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </section>
