@@ -29,6 +29,7 @@ import wristTeleoperationModule from "../../public/concepts/wrist-teleoperation-
 import modularForearmRail from "../../public/concepts/modular-forearm-rail.webp";
 import openFrameForearmModule from "../../public/concepts/open-frame-forearm-module.webp";
 import forearmTactileWearable from "../../public/concepts/forearm-tactile-wearable.webp";
+import tactileGlove from "../../public/concepts/tactile-glove.webp";
 
 /* ─── Product catalog ─────────────────────────────────────────────────────
  * Every listing carries its real development stage. Today every item is a
@@ -446,6 +447,19 @@ export const PRODUCTS: Product[] = [
       "A development set combining a forearm wearable on a mannequin arm, a sixteen-tile array with its controller, a motorised linear stage with controls, and a compact compute box with a laptop. The signal displays are rendered.",
     image: forearmInterfaceSystem,
     alt: "Concept rendering of a mannequin arm on an acrylic stand wearing a tactile brace, a sixteen-tile base unit, a linear motor stage with a control panel, and a compute box with a laptop, each base marked with the FD symbol and joined by blue cables.",
+  },
+  {
+    slug: "tactile-glove",
+    ref: "C31",
+    name: "Tactile Sensing Glove",
+    category: "sensing",
+    stage: "concept",
+    price: null,
+    summary: "A glove with fingertip tactile arrays and swappable sensor tips.",
+    description:
+      "A glove with a tactile array on each fingertip, cable runs along the fingers to a wrist housing, and four interchangeable fingertip sensor modules. It is not a medical device.",
+    image: tactileGlove,
+    alt: "Concept rendering of a black and white glove marked with the FD symbol, with gridded tactile pads on each fingertip and cables running to a white wrist housing, above four small fingertip sensor modules with gold pins.",
   },
   {
     slug: "instrumented-louver-facade",
