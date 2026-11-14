@@ -23,6 +23,12 @@ import tactileHandTiles from "../../public/concepts/tactile-hand-tiles.webp";
 import pressurePadArray from "../../public/concepts/pressure-pad-array.webp";
 import wearableSensorModules from "../../public/concepts/wearable-sensor-modules.webp";
 import embodiedObservationBench from "../../public/concepts/embodied-observation-bench.webp";
+import tactileCalibrationRig from "../../public/concepts/tactile-calibration-rig.webp";
+import forearmInterfaceSystem from "../../public/concepts/forearm-interface-system.webp";
+import wristTeleoperationModule from "../../public/concepts/wrist-teleoperation-module.webp";
+import modularForearmRail from "../../public/concepts/modular-forearm-rail.webp";
+import openFrameForearmModule from "../../public/concepts/open-frame-forearm-module.webp";
+import forearmTactileWearable from "../../public/concepts/forearm-tactile-wearable.webp";
 
 /* ─── Product catalog ─────────────────────────────────────────────────────
  * Every listing carries its real development stage. Today every item is a
@@ -362,6 +368,84 @@ export const PRODUCTS: Product[] = [
       "An integrated bench combining a harness of wearable sensors on a mannequin, a four-pad force plate, a compute stack, and a projector-camera table. All data and displays shown are rendered.",
     image: embodiedObservationBench,
     alt: "Concept rendering of a long aluminium bench marked with the FD symbol, with a mannequin wearing a sensor harness, a four-pad plate, a cabled compute stack, and a projector shining onto a table with a cube and a sphere.",
+  },
+  {
+    slug: "forearm-tactile-wearable",
+    ref: "C25",
+    name: "Forearm Tactile Wearable",
+    category: "sensing",
+    stage: "concept",
+    price: null,
+    summary: "A forearm brace with a 4×4 tactile array and surface electrodes.",
+    description:
+      "A strapped forearm frame carrying a sixteen-cell tactile array, a controller board under a clear cover, and snap leads to adhesive surface electrodes. The display in the background is rendered. It is not a medical device.",
+    image: forearmTactileWearable,
+    alt: "Concept rendering of a forearm brace marked with the FD symbol, with a four-by-four grid of textured tactile cells, a controller board under clear acrylic, and three adhesive electrodes on the arm wired to the brace.",
+  },
+  {
+    slug: "open-frame-forearm-module",
+    ref: "C26",
+    name: "Open-Frame Forearm Module",
+    category: "sensing",
+    stage: "concept",
+    price: null,
+    summary: "A skeletal forearm frame with tactile pad, controller, and battery.",
+    description:
+      "An open machined frame strapped along the forearm, holding a tactile pad, a controller board and an auxiliary sensor board under clear covers, a battery pack, a USB-C port, and leads to four surface electrodes. It is not a medical device.",
+    image: openFrameForearmModule,
+    alt: "Concept rendering of an open dark-metal frame strapped to a forearm, carrying a sixteen-cell pad and two circuit boards under clear covers, a cylindrical battery with blue indicator lights, and four electrodes on the skin.",
+  },
+  {
+    slug: "modular-forearm-rail",
+    ref: "C27",
+    name: "Modular Forearm Sensor Rail",
+    category: "sensing",
+    stage: "concept",
+    price: null,
+    summary: "Swappable sensor modules on a forearm rail, with calibration targets.",
+    description:
+      "A row of interchangeable modules — electrode pod, controller, tactile array, empty bay, and hub — clipped along a forearm, shown on a mannequin arm on a test stand with a checkerboard and ring calibration target and a spare module.",
+    image: modularForearmRail,
+    alt: "Concept rendering of a mannequin forearm on an aluminium stand wearing a chain of square modules marked with the FD symbol, with a checkerboard plate, a ring target card, a spare electrode module, and a circular connector on the bench.",
+  },
+  {
+    slug: "wrist-teleoperation-module",
+    ref: "C28",
+    name: "Wrist Control Module",
+    category: "robotics",
+    stage: "concept",
+    price: null,
+    summary: "A forearm-worn control unit studied for driving a legged robot.",
+    description:
+      "A forearm-worn unit with surface-electrode inputs, a tactile pad, controller board, and battery, studied as a control interface for a tethered legged platform. The robot, the link between them, and the on-screen data are rendered, not demonstrated. It is not a medical device.",
+    image: wristTeleoperationModule,
+    alt: "Concept rendering of a forearm-worn aluminium unit marked with the FD symbol, with a circuit board and sixteen-cell pad under clear acrylic and four electrodes on the arm, cabled to a small quadruped robot on a lab bench.",
+  },
+  {
+    slug: "tactile-calibration-rig",
+    ref: "C29",
+    name: "Tactile Calibration Rig",
+    category: "sensing",
+    stage: "concept",
+    price: null,
+    summary: "A probe stand pressing a 4×4 tile array, with a wrist unit alongside.",
+    description:
+      "A vertical probe stand pressing individual cells of a sixteen-tile array, cabled to a multi-channel display and a force readout, with a wrist-worn unit on an arm rest. Model markings, channel traces, and force values in the image are rendered, not measurements.",
+    image: tactileCalibrationRig,
+    alt: "Concept rendering of a probe on a vertical stand pressing a four-by-four tile array in a base marked with the FD symbol, cabled to a wrist unit on a person's forearm, with a sixteen-channel display, a force meter, and calipers on the bench.",
+  },
+  {
+    slug: "forearm-interface-system",
+    ref: "C30",
+    name: "Forearm Interface Development System",
+    category: "systems",
+    stage: "concept",
+    price: null,
+    summary: "Wearable, tile array, linear stage, and compute as one bench set.",
+    description:
+      "A development set combining a forearm wearable on a mannequin arm, a sixteen-tile array with its controller, a motorised linear stage with controls, and a compact compute box with a laptop. The signal displays are rendered.",
+    image: forearmInterfaceSystem,
+    alt: "Concept rendering of a mannequin arm on an acrylic stand wearing a tactile brace, a sixteen-tile base unit, a linear motor stage with a control panel, and a compute box with a laptop, each base marked with the FD symbol and joined by blue cables.",
   },
   {
     slug: "instrumented-louver-facade",
