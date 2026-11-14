@@ -30,6 +30,10 @@ import modularForearmRail from "../../public/concepts/modular-forearm-rail.webp"
 import openFrameForearmModule from "../../public/concepts/open-frame-forearm-module.webp";
 import forearmTactileWearable from "../../public/concepts/forearm-tactile-wearable.webp";
 import tactileGlove from "../../public/concepts/tactile-glove.webp";
+import flexibleElectrodeSheet from "../../public/concepts/flexible-electrode-sheet.webp";
+import ruggedIoBox from "../../public/concepts/rugged-io-box.webp";
+import lowerLimbTestFrame from "../../public/concepts/lower-limb-test-frame.webp";
+import instrumentedSleeve from "../../public/concepts/instrumented-sleeve.webp";
 
 /* ─── Product catalog ─────────────────────────────────────────────────────
  * Every listing carries its real development stage. Today every item is a
@@ -460,6 +464,58 @@ export const PRODUCTS: Product[] = [
       "A glove with a tactile array on each fingertip, cable runs along the fingers to a wrist housing, and four interchangeable fingertip sensor modules. It is not a medical device.",
     image: tactileGlove,
     alt: "Concept rendering of a black and white glove marked with the FD symbol, with gridded tactile pads on each fingertip and cables running to a white wrist housing, above four small fingertip sensor modules with gold pins.",
+  },
+  {
+    slug: "flexible-electrode-sheet",
+    ref: "C32",
+    name: "Flexible Electrode Sheet",
+    category: "sensing",
+    stage: "concept",
+    price: null,
+    summary: "A thin transparent sheet with an array of contact pads.",
+    description:
+      "A thin, flexible transparent film carrying a grid of round contact pads with printed traces, terminating in a multi-way connector. It is not a medical device.",
+    image: flexibleElectrodeSheet,
+    alt: "Concept rendering of a curved transparent film marked with the FD symbol, with two clusters of round silver pads joined by gold printed traces, and a white connector with a ribbon of cables.",
+  },
+  {
+    slug: "instrumented-sleeve",
+    ref: "C33",
+    name: "Instrumented Limb Sleeve",
+    category: "sensing",
+    stage: "concept",
+    price: null,
+    summary: "A strapped sleeve with distributed sensor nodes.",
+    description:
+      "A strapped sleeve for the forearm or lower leg with small sensor nodes placed along it and cable runs to a rigid cuff. It is not a medical device.",
+    image: instrumentedSleeve,
+    alt: "Concept rendering of a black strapped sleeve with a white cuff marked with the FD symbol, carrying about a dozen small white sensor nodes linked by blue cable runs.",
+  },
+  {
+    slug: "rugged-io-box",
+    ref: "C34",
+    name: "Rugged I/O Box",
+    category: "systems",
+    stage: "concept",
+    price: null,
+    summary: "A compact enclosure with four circular connectors.",
+    description:
+      "A compact, bumpered enclosure with four circular connectors on the front and a vented top, intended as an interface hub for the sensing line.",
+    image: ruggedIoBox,
+    alt: "Concept rendering of a compact white and black box with blue corner bumpers, a vented top panel, the FD symbol, and four round metal connectors on its front face.",
+  },
+  {
+    slug: "lower-limb-test-frame",
+    ref: "C35",
+    name: "Lower-Limb Test Frame",
+    category: "robotics",
+    stage: "concept",
+    price: null,
+    summary: "A guided frame holding a leg brace over a foot plate.",
+    description:
+      "An aluminium frame with guide columns holding a strapped leg brace on a mannequin leg above a foot plate, for bench-testing braces and wearable mechanisms. It is not a medical device.",
+    image: lowerLimbTestFrame,
+    alt: "Concept rendering of an upright aluminium frame with four guide columns and blue fittings, holding a white strapped leg brace marked with the FD symbol on a mannequin leg standing on a foot plate.",
   },
   {
     slug: "instrumented-louver-facade",
