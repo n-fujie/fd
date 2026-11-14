@@ -34,6 +34,20 @@ import flexibleElectrodeSheet from "../../public/concepts/flexible-electrode-she
 import ruggedIoBox from "../../public/concepts/rugged-io-box.webp";
 import lowerLimbTestFrame from "../../public/concepts/lower-limb-test-frame.webp";
 import instrumentedSleeve from "../../public/concepts/instrumented-sleeve.webp";
+import insoleSensingModule from "../../public/concepts/insole-sensing-module.webp";
+import electrodeWristband from "../../public/concepts/electrode-wristband.webp";
+import fingertipContactGlove from "../../public/concepts/fingertip-contact-glove.webp";
+import electrodeBelt from "../../public/concepts/electrode-belt.webp";
+import strapElectrodeBand from "../../public/concepts/strap-electrode-band.webp";
+import stereoDepthCamera from "../../public/concepts/stereo-depth-camera.webp";
+import fourContactPad from "../../public/concepts/four-contact-pad.webp";
+import wiredSensorGlove from "../../public/concepts/wired-sensor-glove.webp";
+import compressionTestJig from "../../public/concepts/compression-test-jig.webp";
+import multiPortSensorHub from "../../public/concepts/multi-port-sensor-hub.webp";
+import flatForcePlate from "../../public/concepts/flat-force-plate.webp";
+import machineVisionCamera from "../../public/concepts/machine-vision-camera.webp";
+import handheld360Scanner from "../../public/concepts/handheld-360-scanner.webp";
+import keySwitchSafetyBox from "../../public/concepts/key-switch-safety-box.webp";
 
 /* ─── Product catalog ─────────────────────────────────────────────────────
  * Every listing carries its real development stage. Today every item is a
@@ -516,6 +530,188 @@ export const PRODUCTS: Product[] = [
       "An aluminium frame with guide columns holding a strapped leg brace on a mannequin leg above a foot plate, for bench-testing braces and wearable mechanisms. It is not a medical device.",
     image: lowerLimbTestFrame,
     alt: "Concept rendering of an upright aluminium frame with four guide columns and blue fittings, holding a white strapped leg brace marked with the FD symbol on a mannequin leg standing on a foot plate.",
+  },
+  {
+    slug: "insole-sensing-module",
+    ref: "C36",
+    name: "Insole Sensing Module",
+    category: "sensing",
+    stage: "concept",
+    price: null,
+    summary: "A dense pressure-sensing insole tethered to a strap-on module.",
+    description:
+      "A thin transparent insole with a dense grid of sensing points, joined by a flat ribbon to a strap-mounted module with an exposed board under a clear window. It is not a medical device.",
+    image: insoleSensingModule,
+    alt: "Concept rendering of a dark translucent insole dotted with sensing points, connected by a flat blue-lit ribbon to a grey strap-on module marked with the FD symbol.",
+  },
+  {
+    slug: "electrode-wristband",
+    ref: "C37",
+    name: "Electrode Wristband",
+    category: "sensing",
+    stage: "concept",
+    price: null,
+    summary: "A wrist module with three skin contacts in the strap.",
+    description:
+      "A white wrist-worn module on a silicone strap with three metal skin contacts and a side button. It is not a medical device.",
+    image: electrodeWristband,
+    alt: "Concept rendering of a white rectangular module marked with the FD symbol on a black silicone strap with a steel buckle and three round metal contacts.",
+  },
+  {
+    slug: "fingertip-contact-glove",
+    ref: "C38",
+    name: "Fingertip Contact Glove",
+    category: "sensing",
+    stage: "concept",
+    price: null,
+    summary: "A glove with metal fingertip contacts and a braided lead.",
+    description:
+      "A black glove with metal contacts on all five fingertips, routed leads along each finger to a white cuff, and a braided cable with a circular connector. It is not a medical device.",
+    image: fingertipContactGlove,
+    alt: "Concept rendering of a black glove with metal fingertip contacts and leads running to a white cuff marked with the FD symbol, with a braided cable ending in a circular connector.",
+  },
+  {
+    slug: "electrode-belt",
+    ref: "C39",
+    name: "Electrode Belt",
+    category: "sensing",
+    stage: "concept",
+    price: null,
+    summary: "An elastic belt with an inner row of contact pads.",
+    description:
+      "An adjustable elastic belt with four contact pads and small sensors on a flexible inner liner, a dark module with a status light, and a circular connector lead. It is not a medical device.",
+    image: electrodeBelt,
+    alt: "Concept rendering of a black elastic belt with four metal pads on a translucent inner liner, a dark grey module marked with the FD symbol and a blue light, and a short cable with a circular connector.",
+  },
+  {
+    slug: "strap-electrode-band",
+    ref: "C40",
+    name: "Strap Electrode Band",
+    category: "sensing",
+    stage: "concept",
+    price: null,
+    summary: "A fabric strap with a module and three contacts.",
+    description:
+      "A soft fabric band carrying a small white module with a status light and three metal contacts on the inner side. It is not a medical device.",
+    image: strapElectrodeBand,
+    alt: "Concept rendering of a black fabric band with a white module marked with the FD symbol and three round metal contacts.",
+  },
+  {
+    slug: "stereo-depth-camera",
+    ref: "C41",
+    name: "Stereo Camera Unit",
+    category: "sensing",
+    stage: "concept",
+    price: null,
+    summary: "A twin-lens camera on a tilting mount.",
+    description:
+      "A compact twin-lens camera with a centre sensor window on an adjustable tilt mount and a screw-down base.",
+    image: stereoDepthCamera,
+    alt: "Concept rendering of a white and black twin-lens camera marked with the FD symbol on a black tilting mount and square base.",
+  },
+  {
+    slug: "four-contact-pad",
+    ref: "C42",
+    name: "Four-Contact Pad",
+    category: "sensing",
+    stage: "concept",
+    price: null,
+    summary: "A small block with four round metal contacts.",
+    description:
+      "A compact block with four round metal contact plates on its top face, a status light, and a cable lead.",
+    image: fourContactPad,
+    alt: "Concept rendering of a small white and black block marked with the FD symbol with four round metal plates on top and a blue light on the front.",
+  },
+  {
+    slug: "wired-sensor-glove",
+    ref: "C43",
+    name: "Wired Sensor Glove",
+    category: "sensing",
+    stage: "concept",
+    price: null,
+    summary: "A fabric glove with fingertip pads and a wrist module.",
+    description:
+      "A fabric glove with pads on each fingertip, thin leads along the fingers to a small wrist module, and a cable. It is not a medical device.",
+    image: wiredSensorGlove,
+    alt: "Concept rendering of a black fabric glove with grey fingertip pads and thin leads to a small white wrist module marked with the FD symbol.",
+  },
+  {
+    slug: "compression-test-jig",
+    ref: "C44",
+    name: "Compression Test Jig",
+    category: "sensing",
+    stage: "concept",
+    price: null,
+    summary: "A screw-down press frame over a sample platform.",
+    description:
+      "A small two-column press with a hand-screw and platen above a weighted sample on a base unit, for bench-loading pads and tiles.",
+    image: compressionTestJig,
+    alt: "Concept rendering of a small press with two columns and a black hand-screw above a steel weight on a white base marked with the FD symbol.",
+  },
+  {
+    slug: "multi-port-sensor-hub",
+    ref: "C45",
+    name: "Multi-Port Sensor Hub",
+    category: "systems",
+    stage: "concept",
+    price: null,
+    summary: "A hub with five circular inputs, Ethernet, and USB.",
+    description:
+      "A compact enclosure with five circular sensor inputs with indicator lights, an Ethernet port, and a USB port.",
+    image: multiPortSensorHub,
+    alt: "Concept rendering of a silver and black box marked with the FD symbol with five round connectors under blue lights, an Ethernet port, and a USB port.",
+  },
+  {
+    slug: "flat-force-plate",
+    ref: "C46",
+    name: "Flat Force Plate",
+    category: "sensing",
+    stage: "concept",
+    price: null,
+    summary: "A low four-quadrant plate with a status light.",
+    description:
+      "A low, square plate divided into four quadrants with a dotted top surface and a status light on the front edge.",
+    image: flatForcePlate,
+    alt: "Concept rendering of a low square plate with a black four-quadrant top and a white base marked with the FD symbol, lit blue at the front.",
+  },
+  {
+    slug: "machine-vision-camera",
+    ref: "C47",
+    name: "Machine Vision Camera",
+    category: "sensing",
+    stage: "concept",
+    price: null,
+    summary: "A compact camera body with a large lens.",
+    description:
+      "A compact square camera body with a large lens and a mounting foot.",
+    image: machineVisionCamera,
+    alt: "Concept rendering of a white and black square camera body marked with the FD symbol with a large black lens ringed in blue, on a small mounting foot.",
+  },
+  {
+    slug: "handheld-360-scanner",
+    ref: "C48",
+    name: "Handheld Multi-Lens Scanner",
+    category: "sensing",
+    stage: "concept",
+    price: null,
+    summary: "A handheld wand with a multi-lens spherical head.",
+    description:
+      "A handheld grip topped with a spherical head carrying several lenses, with a light strip on the handle.",
+    image: handheld360Scanner,
+    alt: "Concept rendering of a black and white handheld wand marked with the FD symbol with a white sphere carrying several lenses on top and a blue light strip on the grip.",
+  },
+  {
+    slug: "key-switch-safety-box",
+    ref: "C49",
+    name: "Key-Switch Control Box",
+    category: "systems",
+    stage: "concept",
+    price: null,
+    summary: "A key switch with three status lights.",
+    description:
+      "A small enclosure with a key switch, green, amber, and red status lights, a USB port, and an Ethernet port, intended to arm and disarm bench equipment. It is not a certified safety device.",
+    image: keySwitchSafetyBox,
+    alt: "Concept rendering of a small silver box marked with the FD symbol with a key in a key switch, green, amber, and red lights, a USB port, and an Ethernet port.",
   },
   {
     slug: "instrumented-louver-facade",
