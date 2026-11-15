@@ -42,6 +42,10 @@ import strapElectrodeBand from "../../public/concepts/strap-electrode-band.webp"
 import stereoDepthCamera from "../../public/concepts/stereo-depth-camera.webp";
 import fourContactPad from "../../public/concepts/four-contact-pad.webp";
 import wiredSensorGlove from "../../public/concepts/wired-sensor-glove.webp";
+import fingertipTactileCaps from "../../public/concepts/fingertip-tactile-caps.webp";
+import clipOnFingertipSensors from "../../public/concepts/clip-on-fingertip-sensors.webp";
+import instrumentedSensorVest from "../../public/concepts/instrumented-sensor-vest.webp";
+import stretchableSensingMat from "../../public/concepts/stretchable-sensing-mat.webp";
 import compressionTestJig from "../../public/concepts/compression-test-jig.webp";
 import multiPortSensorHub from "../../public/concepts/multi-port-sensor-hub.webp";
 import flatForcePlate from "../../public/concepts/flat-force-plate.webp";
@@ -712,6 +716,58 @@ export const PRODUCTS: Product[] = [
       "A small enclosure with a key switch, green, amber, and red status lights, a USB port, and an Ethernet port, intended to arm and disarm bench equipment. It is not a certified safety device.",
     image: keySwitchSafetyBox,
     alt: "Concept rendering of a small silver box marked with the FD symbol with a key in a key switch, green, amber, and red lights, a USB port, and an Ethernet port.",
+  },
+  {
+    slug: "fingertip-tactile-caps",
+    ref: "C50",
+    name: "Fingertip Tactile Caps",
+    category: "sensing",
+    stage: "concept",
+    price: null,
+    summary: "A set of clear fingertip caps with tactile arrays and a palm hub.",
+    description:
+      "Five transparent fingertip caps, each with a dense tactile array and a small board, strapped to the fingers and cabled to a palm hub. It is not a medical device.",
+    image: fingertipTactileCaps,
+    alt: "Concept rendering of five clear fingertip caps with dotted tactile pads, strapped to a hand and cabled to a black palm hub marked with the FD symbol, with close-ups of a cap and the hub.",
+  },
+  {
+    slug: "clip-on-fingertip-sensors",
+    ref: "C51",
+    name: "Clip-On Fingertip Sensors",
+    category: "sensing",
+    stage: "concept",
+    price: null,
+    summary: "Individual clear fingertip sensors with strap clips.",
+    description:
+      "Individual clear fingertip sensors, each with an internal board and a dark clip held by a fabric strap. It is not a medical device.",
+    image: clipOnFingertipSensors,
+    alt: "Concept rendering of four clear fingertip sensors on a hand, each on a black clip marked with the FD symbol and held by a fabric strap.",
+  },
+  {
+    slug: "instrumented-sensor-vest",
+    ref: "C52",
+    name: "Instrumented Sensor Vest",
+    category: "sensing",
+    stage: "concept",
+    price: null,
+    summary: "A mesh vest with distributed sensor nodes and a base unit.",
+    description:
+      "A mesh vest with sensor nodes linked by cable runs across chest and back, chest and waist modules with status lights, and a separate base unit with four circular inputs, Ethernet, and USB. It is not a medical device.",
+    image: instrumentedSensorVest,
+    alt: "Concept rendering of a black mesh vest on a mannequin, front and back, with grey sensor nodes joined by blue cables and silver modules marked with the FD symbol, beside a node close-up, a silver base unit, and four cabled nodes.",
+  },
+  {
+    slug: "stretchable-sensing-mat",
+    ref: "C53",
+    name: "Stretchable Sensing Mat",
+    category: "sensing",
+    stage: "concept",
+    price: null,
+    summary: "A mesh sheet with a grid of sensor nodes and corner anchors.",
+    description:
+      "A flexible mesh sheet carrying a three-by-three grid of round sensor nodes joined by strain elements, an edge controller under a clear cover, and strap anchors at each corner.",
+    image: stretchableSensingMat,
+    alt: "Concept rendering of a translucent mesh sheet with nine round metal sensor nodes linked by blue traces, a controller board on one edge, a corner plate marked with the FD symbol, and metal strap rings at the corners.",
   },
   {
     slug: "instrumented-louver-facade",
