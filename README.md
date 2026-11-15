@@ -2,7 +2,7 @@
 
 Source for **https://fujiedenko.platodesignlab.com/**: the FUJIE DENKO (藤江電工) site.
 
-**Energy & Computational Hardware**: Physical Systems, Energy Harvesting, and Neuromorphic Engineering.
+**Embodied SNN & Electronic Skin Research**: independent research & engineering in tactile sensing, embodied spiking neural networks, and sensor reconfiguration (repositioned 2026-11-15; previous site kept at git tag `backup/pre-repositioning-2026-11-15`).
 FUJIE DENKO is at the research & prototyping stage. FD-01 is a concept-stage initiative, not a product.
 
 ## Stack
@@ -12,7 +12,7 @@ Next.js 15 (App Router), React 19, TypeScript. No other runtime dependencies. Al
 ```
 src/app/
   layout.tsx             Root layout (metadataBase)
-  page.tsx               Home: storefront hero, categories, lineup, technology, research, contact
+  page.tsx               Home: hero, technology, research (evidence levels), development, methods, collaboration, about, contact
   products/page.tsx      Product catalog by category
   products/[slug]/       Product detail pages (static, one per catalog item)
   catalog.ts             Product data: stage, price, images. Edit here to add or release products

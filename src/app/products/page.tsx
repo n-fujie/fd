@@ -4,10 +4,11 @@ import { AnnounceBar, SiteHeader, SiteFooter, ProductGrid, UpdatesBand } from ".
 import { CATEGORIES, PRODUCTS, productsIn } from "../catalog";
 import { SITE_URL } from "../site";
 import "../denko.css";
+import "../film.css";
 
-const TITLE = "Products | FUJIE DENKO";
+const TITLE = "Concept Archive | FUJIE DENKO";
 const DESCRIPTION =
-  "The FUJIE DENKO hardware lineup: energy, sensing, robotics, and systems. All items are in development and not yet for sale.";
+  "Archived hardware concept visualizations from FUJIE DENKO's exploratory phase. Not built, not in active development, not for sale.";
 
 export const metadata: Metadata = {
   title: { absolute: TITLE },
@@ -26,12 +27,14 @@ export default function ProductsPage() {
         <section className="fd-plist-head">
           <div className="fd-wrap">
             <nav aria-label="Breadcrumb" className="fd-crumbs fd-mono">
-              <Link href="/">Home</Link><span aria-hidden="true">/</span><span>Products</span>
+              <Link href="/">Home</Link><span aria-hidden="true">/</span><span>Concept archive</span>
             </nav>
-            <h1 className="fd-h1 fd-h1-s">Products</h1>
+            <h1 className="fd-h1 fd-h1-s">Concept Archive</h1>
             <p className="fd-lede">
-              {PRODUCTS.length} items in development. Every listing shows its current stage. Nothing is for sale
-              yet; price and ordering will appear on a product&apos;s page only once it is available.
+              {PRODUCTS.length} hardware concept visualizations from FUJIE DENKO&apos;s exploratory phase, kept for
+              reference. They are AI-generated images, not photographs. None has been built or is in active
+              development, none is for sale, and no specifications are claimed. Current work is on{" "}
+              <Link href="/#development">electronic skin and embodied SNN research devices</Link>.
             </p>
             <ul className="fd-chips" aria-label="Categories">
               {CATEGORIES.map((c) => (
@@ -42,6 +45,23 @@ export default function ProductsPage() {
                 </li>
               ))}
             </ul>
+          </div>
+        </section>
+
+        <section id="film" className="fd-ssection" aria-labelledby="fd-film-h">
+          <div className="fd-wrap">
+            <div className="fd-shead">
+              <h2 id="fd-film-h" className="fd-h2s">Archive film</h2>
+              <p className="fd-shead-sub">The concept visualizations below, as one short film.</p>
+            </div>
+            <figure className="fd-film-frame">
+              <video controls muted playsInline preload="none" poster="/video/fd-promo-poster.jpg" aria-describedby="fd-film-cap">
+                <source src="/video/fd-promo-720p.mp4" type="video/mp4" />
+              </video>
+              <figcaption id="fd-film-cap" className="fd-mono">
+                All devices shown are AI-generated concept visualizations · Not built, not tested, not for sale
+              </figcaption>
+            </figure>
           </div>
         </section>
 

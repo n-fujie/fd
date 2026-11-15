@@ -3,15 +3,15 @@ import Link from "next/link";
 import fdMark from "../../public/fd-mark.png";
 import MobileMenu from "./MobileMenu";
 import "./social.css";
-import { NAV, OPERATING_ENTITY_LEGAL_NAME, PLATO_SITE, CONTACT_EMAIL, LEGAL_PATH, UPDATES_SUBJECT, SOCIAL, mailto } from "./site";
-import { CATEGORIES, STAGE_LABEL, categoryName, isPurchasable, type Product, type Stage } from "./catalog";
+import { NAV, OPERATING_ENTITY_LEGAL_NAME, PLATO_SITE, CONTACT_EMAIL, LEGAL_PATH, UPDATES_SUBJECT, COLLAB_SUBJECT, SOCIAL, mailto } from "./site";
+import { STAGE_LABEL, categoryName, isPurchasable, type Product, type Stage } from "./catalog";
 
-/** Site-wide notice: nothing in the catalog can be bought yet. */
+/** Site-wide notice: research stage, every result labelled. */
 export function AnnounceBar() {
   return (
     <div className="fd-announce">
       <div className="fd-wrap fd-mono">
-        Pre-release catalog · Products are in development and not yet for sale
+        Electronic skin &amp; embodied SNN research · Every result is labelled with its evidence level
       </div>
     </div>
   );
@@ -33,22 +33,22 @@ export function SiteHeader() {
           </ul>
         </nav>
         <div className="fd-header-cta">
-          <a href={mailto(UPDATES_SUBJECT)} className="fd-btn fd-btn-primary fd-btn-sm">Get updates</a>
-          <MobileMenu items={[...NAV, { label: "Contact", href: "/#contact" }]} />
+          <a href={mailto(COLLAB_SUBJECT)} className="fd-btn fd-btn-primary fd-btn-sm">Collaborate</a>
+          <MobileMenu items={NAV} />
         </div>
       </div>
     </header>
   );
 }
 
-/** "Get notified" band shown above the footer (1X / Framework / BrainChip pattern). */
+/** Research-updates band shown above the footer. */
 export function UpdatesBand() {
   return (
     <section className="fd-updband" aria-labelledby="fd-upd-h">
       <div className="fd-wrap fd-updband-inner">
         <div>
-          <h2 id="fd-upd-h" className="fd-h2s">Get release updates</h2>
-          <p>Hear when a product moves to prototype, pre-order, or sale. Tell us which items interest you, or follow @fujiedenko.</p>
+          <h2 id="fd-upd-h" className="fd-h2s">Follow the research</h2>
+          <p>Research notes, experiment status, and prototype progress, posted as they happen. Follow @fujiedenko or ask to be told by email.</p>
           <SocialLinks className="fd-social-band" />
         </div>
         <a href={mailto(UPDATES_SUBJECT)} className="fd-btn fd-btn-invert">Get updates</a>
@@ -96,37 +96,36 @@ export function SiteFooter() {
       <div className="fd-wrap fd-footer-grid">
         <div className="fd-footer-brand">
           <p className="fd-footer-name">FUJIE DENKO</p>
-          <p>Energy &amp; Computational Hardware</p>
-          <p className="fd-mono fd-footer-meta">Tokyo, Japan</p>
+          <p>Embodied SNN &amp; Electronic Skin Research</p>
+          <p className="fd-mono fd-footer-meta">Independent Research &amp; Engineering · Tokyo, Japan</p>
           {OPERATING_ENTITY_LEGAL_NAME && (
             <p className="fd-footer-meta">Operated by {OPERATING_ENTITY_LEGAL_NAME}</p>
           )}
           <SocialLinks className="fd-social-footer" />
         </div>
-        <nav aria-label="Products" className="fd-footer-col">
-          <p className="fd-mono fd-footer-h">Products</p>
+        <nav aria-label="Research" className="fd-footer-col">
+          <p className="fd-mono fd-footer-h">Research</p>
           <ul>
-            <li><Link href="/products">All products</Link></li>
-            {CATEGORIES.map((c) => (
-              <li key={c.id}><Link href={`/products#${c.id}`}>{c.name}</Link></li>
-            ))}
+            <li><Link href="/#technology">Technology</Link></li>
+            <li><Link href="/#research">Research</Link></li>
+            <li><Link href="/#development">Development</Link></li>
+            <li><Link href="/#methods">Methods &amp; evidence</Link></li>
           </ul>
         </nav>
         <nav aria-label="Company" className="fd-footer-col">
           <p className="fd-mono fd-footer-h">Company</p>
           <ul>
-            <li><Link href="/#applications">Applications</Link></li>
-            <li><Link href="/#technology">Technology</Link></li>
-            <li><Link href="/#research">Research</Link></li>
+            <li><Link href="/#collaboration">Collaboration</Link></li>
+            <li><Link href="/#about">About</Link></li>
+            <li><Link href="/products">Concept archive</Link></li>
             <li><a href={PLATO_SITE}>Plato Design Lab</a></li>
           </ul>
         </nav>
-        <nav aria-label="Support" className="fd-footer-col">
-          <p className="fd-mono fd-footer-h">Support</p>
+        <nav aria-label="Contact" className="fd-footer-col">
+          <p className="fd-mono fd-footer-h">Contact</p>
           <ul>
-            <li><Link href="/#ordering">How ordering works</Link></li>
-            <li><Link href="/terms#shipping">Shipping &amp; returns</Link></li>
-            <li><Link href="/#contact">Contact</Link></li>
+            <li><a href={mailto(COLLAB_SUBJECT)}>Research collaboration</a></li>
+            <li><a href={mailto(UPDATES_SUBJECT)}>Research updates</a></li>
             <li><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></li>
           </ul>
         </nav>
@@ -137,7 +136,7 @@ export function SiteFooter() {
           <Link href={LEGAL_PATH}>Legal notice</Link>
           <Link href="/terms">Terms of sale</Link>
           <Link href="/privacy">Privacy</Link>
-          <span>Research &amp; prototyping stage</span>
+          <span>Research stage</span>
         </span>
       </div>
     </footer>

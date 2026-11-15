@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
-export const alt = "FUJIE DENKO — Energy & Computational Hardware";
+export const alt = "FUJIE DENKO — Embodied SNN & Electronic Skin Research";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -28,17 +28,17 @@ export default async function Image() {
       >
         <div style={{ display: "flex", justifyContent: "space-between", fontSize: 22, color: "#666666", letterSpacing: 2 }}>
           <span>FUJIE DENKO / JAPAN</span>
-          <span style={{ color: "#155EEF" }}>RESEARCH &amp; PROTOTYPING</span>
+          <span style={{ color: "#155EEF" }}>INDEPENDENT RESEARCH &amp; ENGINEERING</span>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 56 }}>
           <img src={src} width={360} height={180} alt="" />
           <div style={{ display: "flex", flexDirection: "column" }}>
             <span style={{ fontSize: 76, fontWeight: 700, letterSpacing: 6 }}>FUJIE DENKO</span>
-            <span style={{ fontSize: 32, color: "#666666", marginTop: 8 }}>Energy &amp; Computational Hardware</span>
+            <span style={{ fontSize: 32, color: "#666666", marginTop: 8 }}>Embodied SNN &amp; Electronic Skin Research</span>
           </div>
         </div>
         <div style={{ display: "flex", borderTop: "2px solid #111111", paddingTop: 20, fontSize: 22, color: "#666666" }}>
-          Energy Harvesting · Neuromorphic Computing · Next-Generation Hardware
+          Electronic Skin · Embodied Spiking Neural Networks · Sensor Reconfiguration
         </div>
       </div>
     ),

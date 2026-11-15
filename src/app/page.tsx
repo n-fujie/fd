@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { AnnounceBar, SiteHeader, SiteFooter, ProductGrid, UpdatesBand, SocialLinks } from "./chrome";
-import { CATEGORIES, HERO_IMAGE, PRODUCTS, productsIn, type CategoryId } from "./catalog";
-import { CONTACT_EMAIL, PLATO_SITE, SITE_URL, SOCIAL, OPERATING_ENTITY_LEGAL_NAME, mailto } from "./site";
+import { AnnounceBar, SiteHeader, SiteFooter, UpdatesBand, SocialLinks } from "./chrome";
+import { PRODUCTS } from "./catalog";
+import { CONTACT_EMAIL, PLATO_SITE, SITE_URL, SOCIAL, OPERATING_ENTITY_LEGAL_NAME, COLLAB_SUBJECT, mailto } from "./site";
 import founderPortrait from "../../public/founder/naoto-fujie.webp";
-import bookOperationalNihilism from "../../public/founder/operational-nihilism.webp";
 import "./denko.css";
 import "./film.css";
+import "./research.css";
 
-const TITLE = "FUJIE DENKO | Energy & Computational Hardware";
+const TITLE = "FUJIE DENKO | Embodied SNN & Electronic Skin Research";
 const DESCRIPTION =
-  "FUJIE DENKO is a Japan-based hardware R&D initiative exploring energy harvesting, embodied spiking neural networks, and next-generation physical infrastructure.";
+  "FUJIE DENKO is an independent research and engineering initiative investigating tactile sensing, embodied spiking neural networks, and sensor reconfiguration.";
 
 export const metadata: Metadata = {
   title: { absolute: TITLE },
@@ -34,55 +34,153 @@ export const metadata: Metadata = {
   },
 };
 
-/* Organization structured data: links the site to its official accounts. */
 const ORG_JSONLD = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "FUJIE DENKO",
   alternateName: "藤江電工",
+  description: DESCRIPTION,
   url: `${SITE_URL}/`,
   logo: `${SITE_URL}/fd-logo.png`,
   email: CONTACT_EMAIL,
+  knowsAbout: [
+    "Embodied spiking neural networks",
+    "Electronic skin",
+    "Tactile sensing",
+    "Neuromorphic sensor interfaces",
+    "Sensor reconfiguration",
+  ],
   sameAs: SOCIAL.map((s) => s.href),
   founder: {
     "@type": "Person",
     name: "Naoto Fujie",
-    jobTitle: "Philosopher",
     url: "https://www.platodesignlab.com",
     sameAs: ["https://orcid.org/0009-0003-0435-181X", "https://philpeople.org/profiles/naoto-fujie", "https://x.com/naotofujie"],
   },
   ...(OPERATING_ENTITY_LEGAL_NAME ? { parentOrganization: { "@type": "Organization", name: OPERATING_ENTITY_LEGAL_NAME } } : {}),
 };
 
-/* Intended uses (design intent, not existing customers or deployments). */
-const APPLICATIONS: { title: string; body: string; cat: CategoryId; img: string }[] = [
+const img = (slug: string) => PRODUCTS.find((p) => p.slug === slug)!.image;
+
+/* ─── Evidence levels: every item on this page carries exactly one. ──────── */
+type Level = "theory" | "computed" | "records" | "proto" | "physical" | "open";
+const LEVELS: { id: Level; name: string; note: string }[] = [
+  { id: "theory", name: "Theoretical Research", note: "Stated as a model or design. No experiment yet." },
+  { id: "computed", name: "Computationally Tested", note: "Run in simulation or code against stated criteria." },
+  { id: "records", name: "Measured-Record Analysis", note: "Analysis of existing measured data recorded by others." },
+  { id: "proto", name: "Physical Prototype in Development", note: "Our own hardware being built." },
+  { id: "physical", name: "Physically Validated", note: "Measured on our own hardware against stated criteria." },
+  { id: "open", name: "Unverified / Open Questions", note: "Not shown. Not claimed." },
+];
+const levelName = (id: Level) => LEVELS.find((l) => l.id === id)!.name;
+
+function LevelTag({ level }: { level: Level }) {
+  return <span className={`fd-lv fd-lv-${level} fd-mono`}>{levelName(level)}</span>;
+}
+
+/* ─── Core technologies ─────────────────────────────────────────────────── */
+const TECH = [
   {
-    title: "Research labs",
-    body: "Platforms for experiments that couple energy harvesting, tactile sensing, and spiking-network control.",
-    cat: "robotics",
-    img: "tactile-robotic-hand",
+    no: "01",
+    title: "Electronic Skin",
+    lead: "Flexible tactile sensing interfaces, sensor arrays, and experimental transduction systems.",
+    body: "Flexible electronic skin, tactile detection, fine electrodes, and iontronic materials, from material studies to the acquisition of tactile signals.",
+    scope: ["Flexible arrays", "Fine electrodes", "Iontronics", "Signal acquisition"],
   },
   {
-    title: "Teaching & prototyping",
-    body: "Hardware with exposed mechanisms and electronics, designed to be opened, inspected, and measured.",
-    cat: "energy",
-    img: "hand-crank-generator",
+    no: "02",
+    title: "Embodied SNN",
+    lead: "Spiking computation coupled to sensing, temporal processing, and physical interaction.",
+    body: "Spike representations of tactile signals, SNN internal state, temporal inference, and coupling to the body, studied experimentally and compared against conventional neural networks.",
+    scope: ["Event encoding", "Internal state", "Temporal inference", "ANN comparison"],
   },
   {
-    title: "Built environment",
-    body: "Building-scale sensing and control, from instrumented facades to multi-channel observation racks.",
-    cat: "systems",
-    img: "instrumented-louver-facade",
+    no: "03",
+    title: "Observation & Sensor Revision",
+    lead: "Measurement, reconfiguration, and the recovery of distinctions under changing sensing conditions.",
+    body: "Built on Total Observation, Five-S, operational shapes, and the Ziran System: sensor replacement, changed observation conditions, loss and recovery of distinctions, and the continuity of measurement records.",
+    scope: ["Sensor exchange", "Distinction loss / recovery", "Record continuity"],
   },
 ];
 
-const ORDERING = [
-  { title: "Get notified", body: "Tell us which products interest you. We write when one moves to pre-order or sale." },
-  { title: "Order online", body: "A released product's page shows its price and a Buy button. Payment is handled securely by Stripe." },
-  { title: "Shipped from Tokyo", body: "Orders ship from Japan. Import duties and taxes in your country may apply." },
+/* ─── Research (status text as supplied by the author; papers are linked
+ *     only once a public copy can be verified). ─────────────────────────── */
+const RESEARCH: { no: string; title: string; id: string; date?: string; scope: string[]; level: Level; status: string; note?: string }[] = [
+  {
+    no: "Research 01",
+    title: "Total Observation of Tactile Operational Shapes",
+    id: "TO-ES6",
+    date: "November 2026",
+    scope: ["Tactile records", "Event encoding", "Temporal distinction", "SNN comparison", "Sensor-configuration change"],
+    level: "records",
+    status: "Executed offline analysis of existing measured tactile records.",
+    note: "A re-analysis of existing tactile data. It is not a physical demonstration of FUJIE DENKO electronic skin.",
+  },
+  {
+    no: "Research 02",
+    title: "Embodied Spiking Neural Networks under Reconfiguration",
+    id: "FD-SNN R9",
+    scope: ["SNN", "Sensor change", "Observation records", "State continuity", "Evidence conditions"],
+    level: "computed",
+    status: "Computational research and methodological validation.",
+    note: "Physical hardware validation remains prospective.",
+  },
+  {
+    no: "Research 03",
+    title: "Embodied Sensor–XenoSNN Systems",
+    id: "SBX-R8h",
+    scope: ["Embodied SNN", "Electronic skin", "Observation revision", "Experimental body systems"],
+    level: "computed",
+    status: "Cumulative research framework with computational experiments and proposed physical validation.",
+  },
 ];
 
-/* Published profiles (from platodesignlab.com). */
+/* ─── Experimental hardware (names as supplied; none built yet). ─────────── */
+const DEVICES: { name: string; body: string; topics: string[]; status: string; level: Level; image?: string; alt?: string }[] = [
+  {
+    name: "Electronic Skin Research Patch",
+    body: "An exchangeable tactile sensor patch with 4 to 8 channels.",
+    topics: ["Tactile acquisition", "Sensor calibration", "Temporal signal processing", "Sensor replacement", "Physical measurement"],
+    status: "Prototype Development Planned",
+    level: "theory",
+    image: "flexible-electrode-sheet",
+    alt: "Concept visualization of a thin transparent film with round contact pads and printed traces, ending in a small connector.",
+  },
+  {
+    name: "Embodied SNN Research Interface",
+    body: "A research interface for comparing tactile input, event encoding, SNN inference, and temporal response.",
+    topics: ["Tactile input", "Event encoding", "SNN inference", "Temporal response"],
+    status: "Computational Research / Hardware Validation Pending",
+    level: "computed",
+  },
+  {
+    name: "Sensor Reconfiguration Test Platform",
+    body: "An experimental setup for testing how distinction and operation change under sensor exchange, rearrangement, disconnection, and recalibration.",
+    topics: ["Sensor exchange", "Rearrangement", "Disconnection", "Recalibration"],
+    status: "Research & Experimental Design",
+    level: "theory",
+    image: "stretchable-sensing-mat",
+    alt: "Concept visualization of a flexible mesh sheet with a grid of round sensor nodes, an edge controller, and corner strap anchors.",
+  },
+];
+
+const METHOD = ["Theory", "Computational Experiment", "Sensor Prototype", "Physical Measurement", "Comparative Evaluation", "Revision"];
+
+const NOT_CLAIMED = [
+  "Energy savings from spiking computation",
+  "An inference advantage for our SNN methods",
+  "Self-revising capability of sensor materials",
+  "Any measured performance figure for FUJIE DENKO hardware",
+];
+
+const SERVICES = [
+  { name: "Collaborative Research", body: "Joint studies on tactile sensing, spiking computation, and embodied systems." },
+  { name: "Experimental Prototyping", body: "Research-grade sensing prototypes built for a defined experiment." },
+  { name: "Custom Sensing Systems", body: "Sensor layouts, acquisition, and encoding for a specific setup." },
+  { name: "Computational Research", body: "Simulation, re-analysis of measured records, and SNN comparison studies." },
+  { name: "Proof-of-Concept Development", body: "Scoped work to test whether an idea produces a measurable difference." },
+];
+
 const FOUNDER_LINKS = [
   { label: "Research website", href: "https://www.platodesignlab.com/about" },
   { label: "PhilPeople", href: "https://philpeople.org/profiles/naoto-fujie" },
@@ -90,79 +188,35 @@ const FOUNDER_LINKS = [
   { label: "X @naotofujie", href: "https://x.com/naotofujie" },
 ];
 
-/* Books by the founder (titles and links as listed on platodesignlab.com). */
-const BOOKS = [
-  { title: "Operational Nihilism", year: "2026", href: "https://amzn.eu/d/08W4W72H", cover: bookOperationalNihilism },
-  { title: "Complete Animism", year: "2026", href: "https://amzn.eu/d/07PQFXz0", cover: null },
-  { title: "The Work That Remains", year: "2026", href: "https://amzn.eu/d/0iCthJqY", cover: null },
-  { title: "P/A — The Dictionary of Operational Philosophy", year: "2026", href: "https://amzn.eu/d/01SMS6W7", cover: null },
-];
-
-const CONTACT_ROUTES = [
-  {
-    kicker: "Product inquiries",
-    title: "Ask about a product or its availability.",
-    body: "Questions about a listing, its development stage, or release timing. We reply by email.",
-    cta: "Send a product inquiry",
-    subject: "Product inquiry",
-    img: "tactile-sensing-module",
-  },
-  {
-    kicker: "Research & business collaboration",
-    title: "Work with us on physical systems.",
-    body: "Research collaboration, physical prototyping, experimental hardware, and engineering partnerships, in Japan and internationally.",
-    cta: "Start a collaboration",
-    subject: "Collaboration inquiry",
-    img: "tactile-robotic-hand",
-  },
-];
-
-const FEATURED = [
-  "research-rack-modules",
-  "legged-platform-transparent",
-  "humanoid-test-rig",
-  "generation-module-large",
-  "tactile-robotic-hand",
-  "bipedal-platform",
-  "hand-crank-generator",
-  "instrumented-louver-facade",
-];
-
-const TECHNOLOGIES = [
-  {
-    no: "01",
-    code: "OEG",
-    title: "Operational Energy Generation",
-    body: "Research into adaptive energy harvesting systems and the physical conditions governing energy conversion, storage, and use.",
-    scope: ["Conversion", "Storage", "Use"],
-  },
-  {
-    no: "02",
-    code: "E-SNN",
-    title: "Embodied SNN",
-    body: "Investigation of spiking neural networks coupled with physical sensors, energy constraints, and adaptive control.",
-    scope: ["Sensing", "Spiking computation", "Control"],
-  },
-  {
-    no: "03",
-    code: "CI",
-    title: "Computational Infrastructure",
-    body: "Exploration of hardware architectures, data-efficient computation, and physical infrastructure for future computing systems.",
-    scope: ["Architecture", "Efficiency", "Infrastructure"],
-  },
-];
-
-const PROCESS = ["Theoretical research", "Computational modeling", "Physical prototyping", "Experimental verification"];
-
-const RESEARCH_FRAMEWORKS = [
-  "Operational-Shape Realism",
-  "Ziran System",
-  "Xenoscience",
-  "Embodied Sensor–XenoSNN Systems",
-];
+/** Signal path of the SNN research interface (a diagram, not a device image). */
+function SnnDiagram() {
+  const steps = [["Tactile", "input"], ["Event", "encoding"], ["SNN", "inference"], ["Temporal", "response"]];
+  return (
+    <svg viewBox="0 0 400 240" role="img" aria-label="Diagram: tactile input, event encoding, SNN inference, temporal response" className="fd-dev-diagram">
+      <defs>
+        <marker id="fd-arrow" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M0 0 L8 4 L0 8 z" fill="#155EEF" />
+        </marker>
+      </defs>
+      <rect width="400" height="240" fill="#F4F5F7" />
+      {steps.map(([a, b], i) => (
+        <g key={a} transform={`translate(${18 + i * 94} 70)`}>
+          <rect width="78" height="56" fill="#fff" stroke="#111" strokeWidth="1.5" />
+          <text x="39" y="25" textAnchor="middle" fontSize="10" fontFamily="ui-monospace, Menlo, monospace" fill="#111">{a}</text>
+          <text x="39" y="39" textAnchor="middle" fontSize="10" fontFamily="ui-monospace, Menlo, monospace" fill="#111">{b}</text>
+          {i < steps.length - 1 && <path d="M79 28 h12" stroke="#155EEF" strokeWidth="2" markerEnd="url(#fd-arrow)" />}
+        </g>
+      ))}
+      <line x1="120" x2="280" y1="172" y2="172" stroke="#6B7280" />
+      {[0, 1, 3, 4, 7, 8, 9, 12, 13, 15].map((k) => (
+        <line key={k} x1={124 + k * 10} x2={124 + k * 10} y1="172" y2={k % 3 === 0 ? 152 : 160} stroke="#155EEF" strokeWidth="2" />
+      ))}
+      <text x="200" y="200" textAnchor="middle" fontSize="10" fontFamily="ui-monospace, Menlo, monospace" fill="#6B7280">SPIKE EVENTS · ILLUSTRATIVE</text>
+    </svg>
+  );
+}
 
 export default function Home() {
-  const featured = FEATURED.map((slug) => PRODUCTS.find((p) => p.slug === slug)!);
   return (
     <div className="fd-root">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_JSONLD) }} />
@@ -175,146 +229,50 @@ export default function Home() {
         <section id="top" className="fd-shero" aria-labelledby="fd-hero-h">
           <div className="fd-wrap fd-shero-grid">
             <div className="fd-shero-copy">
-              <p className="fd-eyebrow fd-mono">FUJIE DENKO / JAPAN · FD LINEUP</p>
-              <h1 id="fd-hero-h" className="fd-h1">Engineering physical systems.</h1>
+              <p className="fd-eyebrow fd-mono">FUJIE DENKO / 藤江電工 · Independent Research &amp; Engineering</p>
+              <h1 id="fd-hero-h" className="fd-h1">Embodied Intelligence, From the Sensor Up.</h1>
               <p className="fd-hero-sub">
-                <span>Energy Harvesting.</span>
-                <span>Neuromorphic Computing.</span>
-                <span>Next-Generation Hardware.</span>
+                <span>Electronic Skin &amp; Embodied Spiking Neural Networks</span>
               </p>
               <p className="fd-lede">
-                Hardware developed in-house by FUJIE DENKO, from energy generation to embodied computation.
-                The lineup is in development: every item is listed with its current stage.
+                FUJIE DENKO is an independent research and engineering initiative investigating tactile sensing,
+                embodied spiking neural networks, and sensor reconfiguration.
+              </p>
+              <p className="fd-lede">
+                Our work connects theoretical research, computational experiments, and the development of physical
+                sensing prototypes.
               </p>
               <div className="fd-actions">
-                <Link href="/products" className="fd-btn fd-btn-primary">View products</Link>
-                <a href={mailto("FUJIE DENKO release updates")} className="fd-btn fd-btn-ghost">Get release updates</a>
+                <a href="#research" className="fd-btn fd-btn-primary">Explore Research</a>
+                <a href={mailto(COLLAB_SUBJECT)} className="fd-btn fd-btn-ghost">Research Collaboration</a>
               </div>
             </div>
             <figure className="fd-shero-img">
               <Image
-                src={HERO_IMAGE}
-                alt="Concept rendering of a white quadruped robot with a transparent top housing, a tactile sensing pad, and a cylindrical generator module, each marked with the FD symbol."
+                src={img("clip-on-fingertip-sensors")}
+                alt="Concept visualization of four clear fingertip sensors on a hand, each with an internal circuit and a black clip held by a fabric strap."
                 placeholder="blur"
                 priority
                 sizes="(max-width: 960px) 100vw, 640px"
               />
-              <figcaption className="fd-mono">Concept rendering · not a photograph</figcaption>
+              <figcaption className="fd-mono">Concept visualization · AI-generated · not a photograph of a built device</figcaption>
             </figure>
-          </div>
-        </section>
-
-        {/* ─── Film ──────────────────────────────────────────────────────── */}
-        <section id="film" className="fd-film" aria-labelledby="fd-film-h">
-          <div className="fd-wrap">
-            <p className="fd-label fd-mono">FILM</p>
-            <h2 id="fd-film-h" className="fd-film-h">The FD lineup in 76 seconds</h2>
-            <figure className="fd-film-frame">
-              <video
-                controls
-                muted
-                playsInline
-                preload="none"
-                poster="/video/fd-promo-poster.jpg"
-                aria-describedby="fd-film-cap"
-              >
-                <source src="/video/fd-promo-720p.mp4" type="video/mp4" />
-              </video>
-              <figcaption id="fd-film-cap" className="fd-mono">
-                All devices shown are concept renderings · Not built, not tested, not for sale
-              </figcaption>
-            </figure>
-          </div>
-        </section>
-
-        {/* ─── 01 Lineup ─────────────────────────────────────────────────── */}
-        <section id="products" className="fd-ssection fd-ssection-tint" aria-labelledby="fd-line-h">
-          <div className="fd-wrap">
-            <p className="fd-label fd-mono">01 / LINEUP</p>
-            <div className="fd-shead">
-              <h2 id="fd-line-h" className="fd-h2s">In development</h2>
-              <Link href="/products" className="fd-shead-link">View all {PRODUCTS.length} →</Link>
-            </div>
-            <ProductGrid products={featured} />
-            <p className="fd-catalog-note">
-              <strong>About this catalog.</strong> Images are concept renderings, not photographs. None of the
-              products shown has been built, tested, or offered for sale, and no specifications or performance
-              are claimed. Each product page will show price and ordering only once that product is actually
-              available.
-            </p>
-          </div>
-        </section>
-
-        {/* ─── Categories ────────────────────────────────────────────────── */}
-        <section className="fd-ssection" aria-labelledby="fd-cat-h">
-          <div className="fd-wrap">
-            <div className="fd-shead">
-              <h2 id="fd-cat-h" className="fd-h2s">Browse by category</h2>
-              <Link href="/products" className="fd-shead-link">All products →</Link>
-            </div>
-            <ul className="fd-cats">
-              {CATEGORIES.map((c) => {
-                const items = productsIn(c.id);
-                return (
-                  <li key={c.id}>
-                    <Link href={`/products#${c.id}`} className="fd-cat">
-                      <div className="fd-cat-img">
-                        <Image src={items[0].image} alt="" placeholder="blur" sizes="(max-width: 560px) 50vw, 300px" />
-                      </div>
-                      <div className="fd-cat-body">
-                        <span className="fd-cat-name">{c.name}</span>
-                        <span className="fd-mono fd-cat-count">{items.length} items</span>
-                      </div>
-                      <p className="fd-cat-blurb">{c.blurb}</p>
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        </section>
-
-        {/* ─── 02 Applications ──────────────────────────────────────────── */}
-        <section id="applications" className="fd-ssection" aria-labelledby="fd-app-h">
-          <div className="fd-wrap">
-            <p className="fd-label fd-mono">02 / APPLICATIONS</p>
-            <div className="fd-shead">
-              <h2 id="fd-app-h" className="fd-h2s">Built for</h2>
-              <p className="fd-shead-sub">Intended uses of the lineup.</p>
-            </div>
-            <ul className="fd-apps">
-              {APPLICATIONS.map((a) => {
-                const p = PRODUCTS.find((x) => x.slug === a.img)!;
-                return (
-                  <li key={a.title}>
-                    <Link href={`/products#${a.cat}`} className="fd-app">
-                      <div className="fd-app-img">
-                        <Image src={p.image} alt="" placeholder="blur" sizes="(max-width: 960px) 100vw, 400px" />
-                      </div>
-                      <h3 className="fd-app-h">{a.title}</h3>
-                      <p>{a.body}</p>
-                      <span className="fd-app-more">See products →</span>
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
           </div>
         </section>
 
         {/* ─── 01 Technology ─────────────────────────────────────────────── */}
         <section id="technology" className="fd-section" aria-labelledby="fd-tech-h">
           <div className="fd-wrap">
-            <p className="fd-label fd-mono">03 / TECHNOLOGY</p>
-            <h2 id="fd-tech-h" className="fd-h2">Core technologies</h2>
+            <p className="fd-label fd-mono">01 / TECHNOLOGY</p>
+            <h2 id="fd-tech-h" className="fd-h2">Research &amp; Technology</h2>
             <ol className="fd-cards">
-              {TECHNOLOGIES.map((t) => (
+              {TECH.map((t) => (
                 <li key={t.no} className="fd-card">
                   <div className="fd-card-head fd-mono">
                     <span className="fd-card-no">{t.no}</span>
-                    <span>{t.code}</span>
                   </div>
                   <h3 className="fd-h3">{t.title}</h3>
+                  <p className="fd-card-body fd-card-lead">{t.lead}</p>
                   <p className="fd-card-body">{t.body}</p>
                   <ul className="fd-card-scope fd-mono" aria-label="Scope">
                     {t.scope.map((s) => <li key={s}>{s}</li>)}
@@ -325,147 +283,206 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ─── 02 Development ────────────────────────────────────────────── */}
-        <section id="development" className="fd-section" aria-labelledby="fd-dev-h">
+        {/* ─── 02 Research ───────────────────────────────────────────────── */}
+        <section id="research" className="fd-section fd-section-tint" aria-labelledby="fd-res-h">
           <div className="fd-wrap">
-            <p className="fd-label fd-mono">04 / DEVELOPMENT</p>
-            <div className="fd-split">
+            <p className="fd-label fd-mono">02 / RESEARCH</p>
+            <div className="fd-rhead">
+              <h2 id="fd-res-h" className="fd-h2">Research-Driven Engineering</h2>
               <div>
-                <h2 id="fd-dev-h" className="fd-h2">From theory to physical systems.</h2>
                 <p className="fd-body">
-                  Our development process connects theoretical research, computational modeling, physical
-                  prototyping, and experimental verification.
+                  Our development process begins with explicit theoretical models, reproducible computational
+                  experiments, and physical validation.
                 </p>
                 <p className="fd-body">
-                  We investigate how energy, computation, sensing, and physical operations can be integrated
-                  under explicit resource constraints.
-                </p>
-                <ol className="fd-process fd-mono" aria-label="Development process">
-                  {PROCESS.map((p, i) => (
-                    <li key={p}><span>{String(i + 1).padStart(2, "0")}</span>{p}</li>
-                  ))}
-                </ol>
-              </div>
-
-              <div className="fd-spec" role="group" aria-labelledby="fd-spec-h">
-                <div className="fd-spec-head">
-                  <span className="fd-mono">CURRENT STATUS</span>
-                  <span className="fd-status fd-mono">
-                    <span className="fd-status-dot" aria-hidden="true" />
-                    RESEARCH &amp; PROTOTYPING
-                  </span>
-                </div>
-                <h3 id="fd-spec-h" className="fd-spec-id">FD-01</h3>
-                <dl className="fd-dl">
-                  <div>
-                    <dt className="fd-mono">Initiative</dt>
-                    <dd>Prototype initiative</dd>
-                  </div>
-                  <div>
-                    <dt className="fd-mono">Scope</dt>
-                    <dd>Operational Energy Generation &amp; Embodied SNN</dd>
-                  </div>
-                  <div>
-                    <dt className="fd-mono">Status</dt>
-                    <dd>Concept Development / Physical Validation Pending</dd>
-                  </div>
-                  <div>
-                    <dt className="fd-mono">Availability</dt>
-                    <dd>Not a product. Not available for sale.</dd>
-                  </div>
-                </dl>
-                <p className="fd-note">
-                  FD-01 is at the concept-development stage. No power-generation output, energy-efficiency
-                  figure, or SNN performance advantage has been experimentally verified, and none is claimed.
+                  We investigate the conditions under which sensing, spiking computation, and embodied interaction
+                  produce measurable differences.
                 </p>
               </div>
             </div>
-          </div>
-        </section>
-
-        {/* ─── 05 Ordering ───────────────────────────────────────────────── */}
-        <section id="ordering" className="fd-ssection fd-ssection-tint" aria-labelledby="fd-ord-h">
-          <div className="fd-wrap">
-            <p className="fd-label fd-mono">05 / ORDERING</p>
-            <div className="fd-shead">
-              <h2 id="fd-ord-h" className="fd-h2s">How ordering works</h2>
-              <Link href="/legal" className="fd-shead-link">Payment, shipping &amp; returns →</Link>
-            </div>
-            <ol className="fd-steps">
-              {ORDERING.map((o, i) => (
-                <li key={o.title}>
-                  <span className="fd-mono fd-step-no">{String(i + 1).padStart(2, "0")}</span>
-                  <h3 className="fd-step-h">{o.title}</h3>
-                  <p>{o.body}</p>
+            <ol className="fd-rlist">
+              {RESEARCH.map((r) => (
+                <li key={r.id} className="fd-ritem">
+                  <div className="fd-ritem-meta fd-mono">
+                    <span>{r.no}</span>
+                    <span className="fd-ritem-id">{r.id}{r.date ? ` — ${r.date}` : ""}</span>
+                  </div>
+                  <div className="fd-ritem-main">
+                    <h3 className="fd-ritem-h">{r.title}</h3>
+                    <ul className="fd-chips fd-mono" aria-label="Topics">
+                      {r.scope.map((s) => <li key={s}>{s}</li>)}
+                    </ul>
+                  </div>
+                  <div className="fd-ritem-status">
+                    <LevelTag level={r.level} />
+                    <p>{r.status}</p>
+                    {r.note && <p className="fd-ritem-note">{r.note}</p>}
+                  </div>
                 </li>
               ))}
             </ol>
+            <p className="fd-legend fd-mono">
+              Papers are linked here once a public copy is available ·{" "}
+              <a href={`${PLATO_SITE}/research`}>Related research at Plato Design Lab ↗</a>
+            </p>
           </div>
         </section>
 
-        {/* ─── 04 Research ───────────────────────────────────────────────── */}
-        <section id="research" className="fd-section" aria-labelledby="fd-res-h">
+        {/* ─── 03 Development ────────────────────────────────────────────── */}
+        <section id="development" className="fd-section" aria-labelledby="fd-dev-h">
           <div className="fd-wrap">
-            <p className="fd-label fd-mono">06 / RESEARCH</p>
-            <div className="fd-split">
+            <p className="fd-label fd-mono">03 / DEVELOPMENT</p>
+            <div className="fd-rhead">
+              <h2 id="fd-dev-h" className="fd-h2">Experimental Hardware Development</h2>
+              <p className="fd-body">
+                Three research devices are being designed to test the questions above. None has been built yet.
+                Images are concept visualizations, not photographs.
+              </p>
+            </div>
+            <ul className="fd-devs">
+              {DEVICES.map((d) => (
+                <li key={d.name} className="fd-dev">
+                  <figure className="fd-dev-fig">
+                    {d.image ? (
+                      <Image src={img(d.image)} alt={d.alt!} placeholder="blur" sizes="(max-width: 960px) 100vw, 400px" />
+                    ) : (
+                      <SnnDiagram />
+                    )}
+                    <figcaption className="fd-mono">{d.image ? "Concept visualization" : "Diagram"}</figcaption>
+                  </figure>
+                  <h3 className="fd-dev-h">{d.name}</h3>
+                  <p className="fd-dev-body">{d.body}</p>
+                  <ul className="fd-chips fd-mono" aria-label="Research topics">
+                    {d.topics.map((t) => <li key={t}>{t}</li>)}
+                  </ul>
+                  <dl className="fd-dev-status">
+                    <dt className="fd-mono">Status</dt>
+                    <dd>{d.status}</dd>
+                  </dl>
+                </li>
+              ))}
+            </ul>
+            <p className="fd-legend fd-mono">
+              Earlier hardware concept visualizations are kept in the <Link href="/products">Concept Archive →</Link>
+            </p>
+          </div>
+        </section>
+
+        {/* ─── 04 Methods & evidence ─────────────────────────────────────── */}
+        <section id="methods" className="fd-section fd-section-tint" aria-labelledby="fd-met-h">
+          <div className="fd-wrap">
+            <p className="fd-label fd-mono">04 / EXPERIMENTAL METHODS</p>
+            <h2 id="fd-met-h" className="fd-h2">From Theory to Physical Validation</h2>
+            <ol className="fd-flow fd-mono" aria-label="Research method">
+              {METHOD.map((m, i) => (
+                <li key={m}><span>{String(i + 1).padStart(2, "0")}</span>{m}</li>
+              ))}
+            </ol>
+            <div className="fd-ev-split">
               <div>
-                <h2 id="fd-res-h" className="fd-h2">Research-driven engineering.</h2>
+                <h3 className="fd-h3">Where each result stands</h3>
                 <p className="fd-body">
-                  FUJIE DENKO draws on research developed through P/A Institute, including Operational-Shape
-                  Realism, Ziran System, Xenoscience, and Embodied Sensor–XenoSNN Systems.
+                  Every item on this site carries one evidence level. Negative results are published within the range
+                  that was actually tested.
                 </p>
-                <p className="fd-body">
-                  These frameworks inform experimental questions concerning physical operations, observation,
-                  energy constraints, and system reconfiguration.
-                </p>
-                <p className="fd-body fd-body-strong">
-                  Theoretical proposals and experimentally verified engineering performance are explicitly
-                  distinguished.
-                </p>
-                <a href={`${PLATO_SITE}/research`} className="fd-link">
-                  Explore P/A Research <span aria-hidden="true">→</span>
-                </a>
+                <table className="fd-ev">
+                  <caption className="fd-mono">Evidence levels · current items</caption>
+                  <tbody>
+                    {LEVELS.filter((l) => l.id !== "open").map((l) => {
+                      const items = [
+                        ...RESEARCH.filter((r) => r.level === l.id).map((r) => r.id),
+                        ...DEVICES.filter((d) => d.level === l.id).map((d) => d.name),
+                      ];
+                      return (
+                        <tr key={l.id}>
+                          <th scope="row"><LevelTag level={l.id} /><span className="fd-ev-note">{l.note}</span></th>
+                          <td>{items.length ? items.join(" · ") : <span className="fd-ev-none">None yet</span>}</td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
               </div>
-              <div>
-                <ul className="fd-frameworks" aria-label="Research frameworks">
-                  {RESEARCH_FRAMEWORKS.map((f, i) => (
-                    <li key={f}>
-                      <span className="fd-mono">{`R${String(i + 1).padStart(2, "0")}`}</span>
-                      <span>{f}</span>
-                      <span className="fd-mono fd-tag">Theory</span>
-                    </li>
-                  ))}
+              <div className="fd-open">
+                <LevelTag level="open" />
+                <h3 className="fd-h3">Not demonstrated, not claimed</h3>
+                <ul>
+                  {NOT_CLAIMED.map((n) => <li key={n}>{n}</li>)}
                 </ul>
-                <p className="fd-legend fd-mono">
-                  “Theory” = theoretical or simulation-stage research. Not engineering performance data.
+                <p className="fd-note">
+                  These remain open research questions. They are not presented as achieved technology anywhere on this
+                  site.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* ─── Founder (XELA-style founder block) ─────────────────────────── */}
-        <section id="founder" className="fd-founder" aria-labelledby="fd-fnd-h">
-          <div className="fd-wrap">
-            <figure className="fd-founder-photo">
-              <Image
-                src={founderPortrait}
-                alt="Portrait of Naoto Fujie in front of bookshelves"
-                placeholder="blur"
-                sizes="(max-width: 1240px) 100vw, 1144px"
-              />
-              <figcaption className="fd-founder-over">
-                <p className="fd-label fd-mono">FOUNDER</p>
-                <h2 id="fd-fnd-h" className="fd-founder-name">Naoto Fujie</h2>
-                <p className="fd-founder-role">Philosopher</p>
-              </figcaption>
-            </figure>
-          </div>
-          <div className="fd-wrap fd-founder-grid">
-            <div className="fd-founder-id">
-              <p className="fd-mono fd-founder-meta">
-                Founder of P/A Institute · Representative, Godo Kaisha TERRA
+        {/* ─── 05 Collaboration ──────────────────────────────────────────── */}
+        <section id="collaboration" className="fd-section" aria-labelledby="fd-col-h">
+          <div className="fd-wrap fd-collab">
+            <div>
+              <p className="fd-label fd-mono">05 / COLLABORATION</p>
+              <h2 id="fd-col-h" className="fd-h2">Research Collaboration &amp; Custom Development</h2>
+              <p className="fd-body">
+                FUJIE DENKO welcomes research-oriented inquiries concerning embodied spiking systems, electronic skin,
+                tactile sensing, experimental instrumentation, and collaborative prototype development.
               </p>
+              <p className="fd-body">
+                Our work centres on research, design, and experiment. Material processing and circuit-board
+                manufacturing are commissioned from external suppliers as each project requires.
+              </p>
+              <div className="fd-actions">
+                <a href={mailto(COLLAB_SUBJECT)} className="fd-btn fd-btn-primary">Start a research inquiry</a>
+                <a href={mailto("Custom development inquiry")} className="fd-btn fd-btn-ghost">Custom development</a>
+              </div>
+            </div>
+            <ul className="fd-svcs">
+              {SERVICES.map((s, i) => (
+                <li key={s.name}>
+                  <span className="fd-mono">{String(i + 1).padStart(2, "0")}</span>
+                  <div>
+                    <h3 className="fd-svc-h">{s.name}</h3>
+                    <p>{s.body}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        {/* ─── 06 About ──────────────────────────────────────────────────── */}
+        <section id="about" className="fd-section fd-section-tint" aria-labelledby="fd-abt-h">
+          <div className="fd-wrap fd-about">
+            <div>
+              <p className="fd-label fd-mono">06 / ABOUT</p>
+              <h2 id="fd-abt-h" className="fd-h2">Independent Research &amp; Engineering</h2>
+              <p className="fd-body">
+                FUJIE DENKO conducts independent research at the intersection of tactile sensing, spiking
+                computation, and embodied systems.
+              </p>
+              <p className="fd-body">
+                Our work draws on the theoretical and experimental programmes of Naoto Fujie, including
+                operational-shape analysis, Total Observation, XenoSNN, and the Ziran System.
+              </p>
+              <p className="fd-body">
+                Research publications, computational experiments, and hardware development are presented according
+                to their respective levels of validation.
+              </p>
+              <p className="fd-body fd-about-roles">
+                Naoto Fujie&apos;s philosophical research is published through P/A Institute and{" "}
+                <a href={PLATO_SITE}>Plato Design Lab</a>. FUJIE DENKO is the separate engineering initiative in which
+                sensing and computation are studied through experiments and hardware.
+                {OPERATING_ENTITY_LEGAL_NAME ? ` FUJIE DENKO is operated by ${OPERATING_ENTITY_LEGAL_NAME}.` : ""}
+              </p>
+            </div>
+            <aside className="fd-about-person" aria-label="Founder">
+              <div className="fd-about-photo">
+                <Image src={founderPortrait} alt="Portrait of Naoto Fujie in front of bookshelves" placeholder="blur" sizes="(max-width: 960px) 100vw, 420px" />
+              </div>
+              <p className="fd-mono fd-about-k">Founder</p>
+              <p className="fd-about-name">Naoto Fujie</p>
+              <p className="fd-about-meta">Independent researcher · Founder of P/A Institute · Representative, Godo Kaisha TERRA</p>
               <ul className="fd-founder-links">
                 {FOUNDER_LINKS.map((l) => (
                   <li key={l.href}>
@@ -473,93 +490,28 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
-            </div>
-            <div className="fd-founder-text">
-              <p className="fd-founder-lead">
-                FUJIE DENKO is a philosopher&apos;s hardware company.
-              </p>
-              <p>
-                Naoto Fujie is a philosopher and developer working as an independent researcher. Fujie&apos;s
-                research programmes, including Operational-Shape Realism, Non-Closure Realism, Xenoscience, and
-                the Ziran System, treat physical, biological, computational, and institutional reality as an open
-                field of operations rather than a set of fixed categories.
-              </p>
-              <p>
-                FUJIE DENKO is where that work meets hardware: energy, sensing, and computation approached as
-                physical operations, to be examined in built systems. Theoretical proposals and verified
-                engineering results are kept explicitly apart.
-              </p>
-              <div className="fd-books">
-                <p className="fd-mono fd-books-h">Books by Naoto Fujie</p>
-                <div className="fd-books-grid">
-                  {BOOKS.filter((b) => b.cover).map((b) => (
-                    <a key={b.title} href={b.href} target="_blank" rel="noopener noreferrer" className="fd-book-feature">
-                      <Image src={b.cover!} alt={`Cover of ${b.title} by Naoto Fujie`} placeholder="blur" sizes="160px" />
-                      <span className="fd-book-title">{b.title}</span>
-                      <span className="fd-mono fd-book-meta">{b.year} · Amazon ↗</span>
-                    </a>
-                  ))}
-                  <ul className="fd-book-list">
-                    {BOOKS.filter((b) => !b.cover).map((b) => (
-                      <li key={b.title}>
-                        <a href={b.href} target="_blank" rel="noopener noreferrer">
-                          <span className="fd-book-title">{b.title}</span>
-                          <span className="fd-mono fd-book-meta">{b.year} · Amazon ↗</span>
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
+            </aside>
           </div>
         </section>
 
-        {/* ─── 07 Custom development (XELA-style customise band) ─────────── */}
-        <section id="custom" className="fd-custom" aria-labelledby="fd-cus-h">
-          <div className="fd-wrap fd-custom-grid">
+        {/* ─── 07 Contact ────────────────────────────────────────────────── */}
+        <section id="contact" className="fd-section" aria-labelledby="fd-con-h">
+          <div className="fd-wrap fd-contact">
             <div>
-              <p className="fd-label fd-mono">07 / CUSTOM DEVELOPMENT</p>
-              <h2 id="fd-cus-h" className="fd-h2s">Hardware shaped around your application.</h2>
+              <p className="fd-label fd-mono">07 / CONTACT</p>
+              <h2 id="fd-con-h" className="fd-h2">Contact</h2>
               <p className="fd-body">
-                Tell us what you need to generate, sense, or control. We can discuss form factor, sensing
-                channels, energy constraints, and how the system connects to your setup, as part of our
-                development work.
+                For collaborative research, experimental prototyping, or questions about our work, write to us. We
+                reply by email.
               </p>
-              <a href={mailto("Custom development inquiry")} className="fd-btn fd-btn-primary">Discuss custom development</a>
             </div>
-            <figure className="fd-custom-img">
-              <Image src={PRODUCTS.find((p) => p.slug === "research-rack-modules")!.image} alt="" placeholder="blur" sizes="(max-width: 960px) 100vw, 600px" />
-              <figcaption className="fd-mono">Concept rendering</figcaption>
-            </figure>
-          </div>
-        </section>
-
-        {/* ─── 08 Contact: two routes (inquiries / collaboration) ─────────── */}
-        <section id="contact" className="fd-ssection fd-ssection-tint" aria-labelledby="fd-col-h">
-          <div className="fd-wrap">
-            <p className="fd-label fd-mono">08 / CONTACT</p>
-            <h2 id="fd-col-h" className="fd-h2s fd-contact-h">Building the next generation of physical systems.</h2>
-            <ul className="fd-routes">
-              {CONTACT_ROUTES.map((r) => {
-                const p = PRODUCTS.find((x) => x.slug === r.img)!;
-                return (
-                  <li key={r.title}>
-                    <a href={mailto(r.subject)} className="fd-route">
-                      <span className="fd-mono fd-route-k">{r.kicker}</span>
-                      <h3 className="fd-route-h">{r.title}</h3>
-                      <p>{r.body}</p>
-                      <div className="fd-route-img">
-                        <Image src={p.image} alt="" placeholder="blur" sizes="(max-width: 960px) 100vw, 600px" />
-                      </div>
-                      <span className="fd-route-cta">{r.cta} <span aria-hidden="true">→</span></span>
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
-            <div className="fd-contact-foot">
-              <a href={`mailto:${CONTACT_EMAIL}`} className="fd-mono fd-email">{CONTACT_EMAIL}</a>
+            <div className="fd-contact-box">
+              <a href={mailto(COLLAB_SUBJECT)} className="fd-email-big">{CONTACT_EMAIL}</a>
+              <ul className="fd-contact-routes">
+                <li><a href={mailto(COLLAB_SUBJECT)}>Research collaboration →</a></li>
+                <li><a href={mailto("Custom development inquiry")}>Custom development →</a></li>
+                <li><a href={mailto("General inquiry")}>General inquiry →</a></li>
+              </ul>
               <SocialLinks />
             </div>
           </div>

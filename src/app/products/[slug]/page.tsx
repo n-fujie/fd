@@ -49,14 +49,14 @@ export default async function ProductPage({ params }: Props) {
         <div className="fd-wrap">
           <nav aria-label="Breadcrumb" className="fd-crumbs fd-mono">
             <Link href="/">Home</Link><span aria-hidden="true">/</span>
-            <Link href="/products">Products</Link><span aria-hidden="true">/</span>
+            <Link href="/products">Concept archive</Link><span aria-hidden="true">/</span>
             <Link href={`/products#${p.category}`}>{categoryName(p.category)}</Link>
           </nav>
 
           <article className="fd-pd">
             <figure className="fd-pd-img">
               <Image src={p.image} alt={p.alt} placeholder="blur" priority sizes="(max-width: 960px) 100vw, 720px" />
-              <figcaption className="fd-mono">Concept rendering · not a photograph</figcaption>
+              <figcaption className="fd-mono">Concept visualization · AI-generated · not a photograph</figcaption>
             </figure>
 
             <div className="fd-pd-info">
@@ -82,12 +82,16 @@ export default async function ProductPage({ params }: Props) {
                 ) : available ? (
                   <a href={mailto(`Order inquiry: ${p.name}`)} className="fd-btn fd-btn-primary fd-btn-block">Order inquiry</a>
                 ) : (
-                  <a href={mailto(`Release updates: ${p.name} (${p.ref})`)} className="fd-btn fd-btn-primary fd-btn-block">
-                    Notify me when available
-                  </a>
+                  <>
+                    <p className="fd-pd-stage">
+                      Archived concept from FUJIE DENKO&apos;s exploratory phase. It is not in active development.
+                      Current work focuses on electronic skin and embodied SNN research devices.
+                    </p>
+                    <Link href="/#development" className="fd-btn fd-btn-primary fd-btn-block">See current development</Link>
+                  </>
                 )}
                 <a href={mailto(`Question: ${p.name} (${p.ref})`)} className="fd-btn fd-btn-ghost fd-btn-block">
-                  Ask about this product
+                  Ask about this concept
                 </a>
               </div>
 
@@ -115,24 +119,16 @@ export default async function ProductPage({ params }: Props) {
             <h2 id="fd-faq-h" className="fd-h2s">Questions</h2>
             <div className="fd-faq">
               <details>
-                <summary>Can I buy this now?</summary>
-                <p>{STAGE_NOTE[p.stage]} {available ? "" : "When it can be ordered, this page will show the price and a Buy button."}</p>
+                <summary>Is this being developed?</summary>
+                <p>No. It is an archived concept visualization. FUJIE DENKO&apos;s current development is limited to the research devices listed under <Link href="/#development">Development</Link>.</p>
               </details>
               <details>
-                <summary>How will I know when it is available?</summary>
-                <p>Use “Notify me when available” above, or get release updates for the whole lineup. We write when a product moves to pre-order or sale.</p>
+                <summary>Can I buy this?</summary>
+                <p>{STAGE_NOTE[p.stage]} No specifications or performance are claimed.</p>
               </details>
               <details>
-                <summary>Where do you ship?</summary>
-                <p>We plan to sell internationally from Tokyo, Japan. Shipping destinations and costs will be shown on each product page at release. Import duties and taxes in your country may apply.</p>
-              </details>
-              <details>
-                <summary>How is payment handled?</summary>
-                <p>Checkout is handled by Stripe. FUJIE DENKO does not see or store your card details. See our <Link href="/privacy">privacy policy</Link> and <Link href="/terms">terms of sale</Link>.</p>
-              </details>
-              <details>
-                <summary>What is your returns policy?</summary>
-                <p>See <Link href="/terms#returns">Returns and refunds</Link> in our terms of sale.</p>
+                <summary>Can I discuss a similar system?</summary>
+                <p>Yes. Research collaboration and custom sensing development are described under <Link href="/#collaboration">Collaboration</Link>.</p>
               </details>
             </div>
           </div>
@@ -141,8 +137,8 @@ export default async function ProductPage({ params }: Props) {
         <section className="fd-ssection fd-ssection-tint" aria-labelledby="fd-rel-h">
           <div className="fd-wrap">
             <div className="fd-shead">
-              <h2 id="fd-rel-h" className="fd-h2s">More from the lineup</h2>
-              <Link href="/products" className="fd-shead-link">All products →</Link>
+              <h2 id="fd-rel-h" className="fd-h2s">More from the archive</h2>
+              <Link href="/products" className="fd-shead-link">Full archive →</Link>
             </div>
             <ProductGrid products={related} />
           </div>
