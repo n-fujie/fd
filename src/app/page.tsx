@@ -143,8 +143,8 @@ const DEVICES: { name: string; body: string; topics: string[]; status: string; l
     topics: ["Tactile acquisition", "Sensor calibration", "Temporal signal processing", "Sensor replacement", "Physical measurement"],
     status: "Prototype Development Planned",
     level: "theory",
-    image: "flexible-electrode-sheet",
-    alt: "Concept visualization of a thin transparent film with round contact pads and printed traces, ending in a small connector.",
+    image: "flexible-tactile-patch",
+    alt: "Concept visualization of a bendable clear patch with metal tactile pads and gold traces, ending in a small encapsulated readout board.",
   },
   {
     name: "Embodied SNN Research Interface",
@@ -159,8 +159,8 @@ const DEVICES: { name: string; body: string; topics: string[]; status: string; l
     topics: ["Sensor exchange", "Rearrangement", "Disconnection", "Recalibration"],
     status: "Research & Experimental Design",
     level: "theory",
-    image: "stretchable-sensing-mat",
-    alt: "Concept visualization of a flexible mesh sheet with a grid of round sensor nodes, an edge controller, and corner strap anchors.",
+    image: "tactile-fingertip-probe",
+    alt: "Concept visualization of a clear fingertip-shaped tactile probe seated in an exchangeable metal connector block.",
   },
 ];
 
@@ -249,8 +249,8 @@ export default function Home() {
             </div>
             <figure className="fd-shero-img">
               <Image
-                src={img("clip-on-fingertip-sensors")}
-                alt="Concept visualization of four clear fingertip sensors on a hand, each with an internal circuit and a black clip held by a fabric strap."
+                src={img("fingertip-skin-sleeve")}
+                alt="Concept visualization of a thin clear tactile sleeve on a fingertip, with metal pads, gold traces, and a small readout board."
                 placeholder="blur"
                 priority
                 sizes="(max-width: 960px) 100vw, 640px"

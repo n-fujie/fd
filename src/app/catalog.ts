@@ -52,6 +52,11 @@ import flatForcePlate from "../../public/concepts/flat-force-plate.webp";
 import machineVisionCamera from "../../public/concepts/machine-vision-camera.webp";
 import handheld360Scanner from "../../public/concepts/handheld-360-scanner.webp";
 import keySwitchSafetyBox from "../../public/concepts/key-switch-safety-box.webp";
+import tactileFingertipProbe from "../../public/concepts/tactile-fingertip-probe.webp";
+import roboticFingertipSkin from "../../public/concepts/robotic-fingertip-skin.webp";
+import flexibleTactilePatch from "../../public/concepts/flexible-tactile-patch.webp";
+import roboticFingertipModule from "../../public/concepts/robotic-fingertip-module.webp";
+import fingertipSkinSleeve from "../../public/concepts/fingertip-skin-sleeve.webp";
 
 /* ─── Product catalog ─────────────────────────────────────────────────────
  * Every listing carries its real development stage. Today every item is a
@@ -768,6 +773,71 @@ export const PRODUCTS: Product[] = [
       "A flexible mesh sheet carrying a three-by-three grid of round sensor nodes joined by strain elements, an edge controller under a clear cover, and strap anchors at each corner.",
     image: stretchableSensingMat,
     alt: "Concept rendering of a translucent mesh sheet with nine round metal sensor nodes linked by blue traces, a controller board on one edge, a corner plate marked with the FD symbol, and metal strap rings at the corners.",
+  },
+  {
+    slug: "tactile-fingertip-probe",
+    ref: "C54",
+    name: "Tactile Fingertip Probe",
+    category: "sensing",
+    stage: "concept",
+    price: null,
+    summary: "A clear fingertip-shaped tactile probe on an exchangeable connector block.",
+    description:
+      "A transparent fingertip-shaped probe with embedded tactile pads and fine traces, mounted on a metal connector block so the sensing tip can be swapped, with a flat multi-line lead.",
+    image: tactileFingertipProbe,
+    alt: "Concept rendering of a clear fingertip-shaped probe with dark square pads and gold traces, joined to a silver connector block marked with the FD symbol and a flat gold ribbon lead.",
+  },
+  {
+    slug: "fingertip-skin-sleeve",
+    ref: "C55",
+    name: "Fingertip Skin Sleeve",
+    category: "sensing",
+    stage: "concept",
+    price: null,
+    summary: "A thin clear tactile sleeve worn over a fingertip.",
+    description:
+      "A thin transparent sleeve with embedded tactile pads and traces, worn over a fingertip, with a small board and a flat cable connector at the base. It is not a medical device.",
+    image: fingertipSkinSleeve,
+    alt: "Concept rendering of a clear tactile sleeve on a human fingertip with six metal pads and gold traces, a small board marked with the FD symbol, and an amber flat cable.",
+  },
+  {
+    slug: "flexible-tactile-patch",
+    ref: "C56",
+    name: "Flexible Tactile Patch",
+    category: "sensing",
+    stage: "concept",
+    price: null,
+    summary: "A bendable clear patch with tactile pads and an encapsulated readout board.",
+    description:
+      "A bendable transparent patch carrying a grid of tactile pads joined by gold traces, ending in an encapsulated readout board and a cable.",
+    image: flexibleTactilePatch,
+    alt: "Concept rendering of a curved clear patch with ten metal pads and gold traces, ending in a clear housing with a small board marked with the FD symbol and a black cable.",
+  },
+  {
+    slug: "robotic-fingertip-skin",
+    ref: "C57",
+    name: "Robotic Fingertip Skin",
+    category: "sensing",
+    stage: "concept",
+    price: null,
+    summary: "A clear tactile skin cover on a robot finger segment.",
+    description:
+      "A transparent tactile skin cover with pads and traces, fitted over the last segment of a robot finger and routed into the joint housing.",
+    image: roboticFingertipSkin,
+    alt: "Concept rendering of a clear tactile fingertip cover with pads and gold traces on a silver robot finger segment marked with the FD symbol.",
+  },
+  {
+    slug: "robotic-fingertip-module",
+    ref: "C58",
+    name: "Robotic Fingertip Module",
+    category: "sensing",
+    stage: "concept",
+    price: null,
+    summary: "A clamp-on clear tactile fingertip for a robot finger.",
+    description:
+      "A transparent tactile fingertip held by a metal clamp ring and bracket, with traces routed into a white robot finger segment.",
+    image: roboticFingertipModule,
+    alt: "Concept rendering of a clear tactile fingertip with metal pads and gold traces, held by a steel ring on a white robot finger segment marked with the FD symbol.",
   },
   {
     slug: "instrumented-louver-facade",
