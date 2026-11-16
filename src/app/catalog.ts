@@ -57,6 +57,8 @@ import roboticFingertipSkin from "../../public/concepts/robotic-fingertip-skin.w
 import flexibleTactilePatch from "../../public/concepts/flexible-tactile-patch.webp";
 import roboticFingertipModule from "../../public/concepts/robotic-fingertip-module.webp";
 import fingertipSkinSleeve from "../../public/concepts/fingertip-skin-sleeve.webp";
+import tactilePadArrayInterface from "../../public/concepts/tactile-pad-array-interface.webp";
+import exchangeablePadGripper from "../../public/concepts/exchangeable-pad-gripper.webp";
 
 /* ─── Product catalog ─────────────────────────────────────────────────────
  * Every listing carries its real development stage. Today every item is a
@@ -838,6 +840,32 @@ export const PRODUCTS: Product[] = [
       "A transparent tactile fingertip held by a metal clamp ring and bracket, with traces routed into a white robot finger segment.",
     image: roboticFingertipModule,
     alt: "Concept rendering of a clear tactile fingertip with metal pads and gold traces, held by a steel ring on a white robot finger segment marked with the FD symbol.",
+  },
+  {
+    slug: "tactile-pad-array-interface",
+    ref: "C59",
+    name: "Tactile Pad Array & Interface Box",
+    category: "sensing",
+    stage: "concept",
+    price: null,
+    summary: "A clear sheet of tactile pads cabled to a compact interface box.",
+    description:
+      "A transparent sheet carrying ten soft tactile pads joined by printed traces, with a flat lead into the connector of a compact metal interface box with a single cable out.",
+    image: tactilePadArrayInterface,
+    alt: "Concept rendering of a clear sheet with ten soft square pads and amber traces, connected by a flat ribbon to a silver interface box marked with the FD symbol.",
+  },
+  {
+    slug: "exchangeable-pad-gripper",
+    ref: "C60",
+    name: "Gripper with Exchangeable Tactile Pads",
+    category: "sensing",
+    stage: "concept",
+    price: null,
+    summary: "A two-finger gripper with swappable tactile fingertip pads.",
+    description:
+      "A two-finger gripper whose fingertips carry clear tactile pad cartridges with edge contacts, shown with a set of interchangeable pads in different surface textures.",
+    image: exchangeablePadGripper,
+    alt: "Concept rendering of a silver two-finger gripper marked with the FD symbol, with clear studded fingertip pads, and five interchangeable pad cartridges with different textures in front.",
   },
   {
     slug: "instrumented-louver-facade",
